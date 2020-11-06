@@ -1,6 +1,4 @@
 ---
-title: "Post 1"
-
+title: Hello
 ---
-
-This is body of post 1.
+This is body of post 1. CHANGED
