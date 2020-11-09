@@ -1,4 +1,4 @@
 ---
-title: Post 4
+title: Post 1
 ---
-This is body of post 4. CHANGED
+This is body of post 1. CHANGED
