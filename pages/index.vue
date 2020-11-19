@@ -5,7 +5,30 @@
       <div class="cover">
         <template>
           <v-parallax height="800" :src="require('../assets/cover.jpg')">
-            <img class="logo" src="../assets/logo.png" /><img />
+            <img class="logo" style="float:right" src="../assets/logo.png" /><img />
+
+            <div class="menu">
+              <span
+                style="font-size:30px;cursor:pointer;float:right;position:fixed;background:rgba(0,0,0, 0.4);"
+                @click="openNav()"
+              >
+                MENU &#9776;</span
+              >
+            </div>
+            <div id="mySidenav" class="sidenav" close-on-content-click>
+              
+              <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
+                >&times;</a
+              >
+              <a href="#" @click="closeNav()">Home</a>
+              <a href="#about" @click="closeNav()" >About</a>
+              <a href="#product" @click="closeNav()">Collection</a>
+              <a href="#contact" @click="closeNav()">Contact</a>
+            </div>
+            <div v-if="bar">
+              <v-card> HELLO</v-card>
+            </div>
+
             <div class="cover_text">
               <h3>
                 WE ARE SHYIGANYINGPA CARPETS.
@@ -41,7 +64,7 @@
     </div>
 
     <!-- Product Div -->
-    <div class="products">
+    <div class="products" id="product">
       <div class="container ">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
@@ -52,17 +75,16 @@
     <div class="extra">
       <div class="container"></div>
     </div>
-    
+
     <!-- Contact us -->
-    <div class="contact ">
+    <div class="contact " id="contact">
       <div class="container text_contact ">
         <h3>Contact</h3>
         <h1>Get In Touch.</h1>
       </div>
       <v-row
-        ><v-col  cols="6"><contactform /></v-col
-      >
-      <!-- <v-col cols="6">
+        ><v-col cols="6"><contactform /></v-col>
+        <!-- <v-col cols="6">
          <div class="col-md-3 col-md-offset-1 contact-info">
           <div class="contact-item">
             <h3>Contact Information</h3>
@@ -95,21 +117,32 @@
       </v-col> -->
       </v-row>
     </div>
-    
   </div>
-
 </template>
 <script>
 import contactform from "../components/contactform";
 
 export default {
   components: {
-    contactform,
-    
+    contactform
+  },
+  data() {
+    return {
+      bar: false
+    };
+  },
+  methods: {
+    openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    },
+
+    closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
   }
 };
 </script>
-<style  lang="scss">
+<style lang="scss">
 // .content {
 //   text-align: center;
 //   background-position: fixed;
@@ -159,6 +192,7 @@ export default {
 
 .logo {
   display: block;
+  
   margin: 0;
   padding: 0;
   outline: 0;
@@ -227,12 +261,77 @@ export default {
   margin-top: 2%;
   background: black;
   color: white;
-  padding:7%
+  padding: 7%;
 }
 .extra {
   height: 50vh;
 }
+// .menu{
+//   align-content: right !important;
+//   font-size:42px !important ;
+//   text-align: right;
+//   background: transparent !important;
+//   height: 42px !important;
+//   float: right;
+//   // position: fixed;
+//   // display: flex;
+//   display: block;
+//   position: absolute;
+//   display: fixed;
 
+//   flex-wrap: nowrap;
+// }
+.menu_btn {
+  background: transparent !important;
+  height: 42px !important;
+
+  float: right;
+  position: fixed;
+  display: block;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
