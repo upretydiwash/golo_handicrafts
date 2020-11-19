@@ -427,7 +427,7 @@ input,
 v-textarea {
   background: white !important;
 }
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 150px) {
   h1,
   .products h1,
   .contact h1 {
