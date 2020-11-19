@@ -4,24 +4,20 @@
     <div>
       <div class="cover">
         <template>
-          <v-parallax height="800" :src="require('../assets/cover.jpg')">
-            <img class="logo" style="float:right" src="../assets/logo.png" /><img />
-
-            <div class="menu">
-              <span
-                style="font-size:30px;cursor:pointer;float:right;position:fixed;background:rgba(0,0,0, 0.4);"
-                @click="openNav()"
-              >
-                MENU &#9776;</span
-              >
+          <v-parallax
+            height="800"
+            style="max-width:100%"
+            :src="require('../assets/cover.jpg')"
+          >
+            <div>
+              <span class="menu" @click="openNav()"> MENU &#9776;</span>
             </div>
             <div id="mySidenav" class="sidenav" close-on-content-click>
-              
               <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
                 >&times;</a
               >
               <a href="#" @click="closeNav()">Home</a>
-              <a href="#about" @click="closeNav()" >About</a>
+              <a href="#about" @click="closeNav()">About</a>
               <a href="#product" @click="closeNav()">Collection</a>
               <a href="#contact" @click="closeNav()">Contact</a>
             </div>
@@ -30,11 +26,14 @@
             </div>
 
             <div class="cover_text">
-              <h3>
-                WE ARE SHYIGANYINGPA CARPETS.
-              </h3>
+              <img
+                src="../static/uploads/logo.jpg"
+                height="150"
+                width="150"
+                alt=""
+              />
               <h1>
-                We Craft Authentic Handmade Tibetan Carpets.
+                Authentic handmade felt.
               </h1>
             </div>
             <div class="btn_cover">
@@ -50,7 +49,7 @@
     <!--About div -->
     <div class="about_us" id="about">
       <div class="container">
-        <h2>
+        <h2 style="margin-top:5rem">
           ABOUT US
         </h2>
         <p>
@@ -65,15 +64,12 @@
 
     <!-- Product Div -->
     <div class="products" id="product">
-      <div class="container ">
+      <div class="container">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
           <h1>See Our Featured Carpets and Rugs.</h1>
         </div>
       </div>
-    </div>
-    <div class="extra">
-      <div class="container"></div>
     </div>
 
     <!-- Contact us -->
@@ -82,53 +78,107 @@
         <h3>Contact</h3>
         <h1>Get In Touch.</h1>
       </div>
-      <v-row
-        ><v-col cols="6"><contactform /></v-col>
-        <!-- <v-col cols="6">
-         <div class="col-md-3 col-md-offset-1 contact-info">
-          <div class="contact-item">
-            <h3>Contact Information</h3>
-            <p>
-              <span><i class="fa fa-map-marker"></i> WHERE TO FIND US</span>
-              Hattisar,<br />
-              Kathmandu, Nepal
-            </p>
-          </div>
-          <div class="contact-item">
-            <p>
-              <span><i class="fa fa-envelope-o"></i> Email</span>
-              info@level9.tech
-            </p>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="social">
-              <ul>
-                <li>
-                  <a href="https://www.facebook.com/level9.tech" target="blank"
-                    ><i class="fa fa-facebook"></i
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </v-col> -->
+      <v-row>
+        <v-col>
+           <div class="form_cont center">
+    <v-form class="form_cont" netlify="true">
+      <v-container class="form_container">
+        <p style="align-text:center">SEND US A MESSAGE</p>
+        <v-row>
+          <v-col cols="6">
+            <input
+            class="col"
+              type="text"
+              color="white"
+              placeholder="Name"
+              outlined
+              v-model="firstname"
+              :rules="nameRules"
+              label="Name"
+              required
+            />
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="3">
+            <input
+            class="col"
+              outlined
+              v-model="firstname"
+              :rules="nameRules"
+              placeholder="Email"
+              required
+            />
+          </v-col>
+          <v-col cols="3">
+            <input
+            class="col"
+              outlined
+              v-model="firstname"
+              :rules="nameRules"
+              placeholder="Subject"
+              required
+            >
+            
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="6">
+            <textarea class="col" type="message" outlined placeholder="Message"/>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="6">
+            <v-btn block class="btn_submit">Submit</v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
+  </div>
+        </v-col>
       </v-row>
     </div>
+
+    <template>
+      <v-footer
+        style="text-align:center; margin:0px; padding:0px; background:black "
+        :padless="padless"
+      >
+        <v-card flat dark tile width="100%" class="red lighten-1 text-center">
+          <v-card-text>
+            <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
+              <v-icon size="24px">
+                {{ icon }}
+              </v-icon>
+            </v-btn>
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-text class="white--text">
+            Copyright © GOLO Handicrafts 2020.
+          </v-card-text>
+        </v-card>
+      </v-footer>
+    </template>
   </div>
 </template>
+
 <script>
 import contactform from "../components/contactform";
-
+import footer from "../components/footer";
 export default {
   components: {
-    contactform
+    contactform,
+    footer
   },
   data() {
     return {
-      bar: false
+      bar: false,
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
     };
   },
   methods: {
@@ -154,10 +204,13 @@ export default {
 .v-parallax_content {
   height: 200vh !important;
 }
-
+.form_container{
+  margin-left: 25%;
+}
 // div:nth-child(5) {
 //   background-image: url("../assets/hello.jpeg");
 // }
+
 .home {
   height: 150vh;
 }
@@ -167,10 +220,11 @@ export default {
 .about_us {
   font-family: "montserrat-bold", sans-serif;
   text-align: center;
+  background: #eeecec;
 
-  margin-top: 2rem;
   color: #07617d;
-  height: 100vh;
+  min-height: 100vh;
+  height: max-content;
 }
 .about_us p {
   font-family: "librebaskerville-bold", serif;
@@ -184,7 +238,7 @@ export default {
   font-family: "montserrat-bold", sans-serif;
   font-size: 2.2rem;
   color: white;
-
+  text-transform: uppercase;
   letter-spacing: 0.3rem;
   margin: 0 0 0.9rem 0;
   padding: 10%;
@@ -192,7 +246,7 @@ export default {
 
 .logo {
   display: block;
-  
+
   margin: 0;
   padding: 0;
   outline: 0;
@@ -216,8 +270,11 @@ export default {
 .theme--light.v-btn {
   color: white;
 }
+.form_cont{
+  
+}
 .products {
-  background: black;
+  background: rgb(152, 150, 150);
   align-content: center;
   text-align: center;
   color: white;
@@ -258,32 +315,29 @@ export default {
   display: block;
 }
 .contact {
-  margin-top: 2%;
-  background: black;
+  background: rgb(17, 16, 16);
   color: white;
   padding: 7%;
+  align-content: center !important;
+  align-items: center;
+  height: 100vh;
+  justify-items: center;
+  
 }
-.extra {
-  height: 50vh;
-}
-// .menu{
-//   align-content: right !important;
-//   font-size:42px !important ;
-//   text-align: right;
-//   background: transparent !important;
-//   height: 42px !important;
-//   float: right;
-//   // position: fixed;
-//   // display: flex;
-//   display: block;
-//   position: absolute;
-//   display: fixed;
 
-//   flex-wrap: nowrap;
-// }
+.menu {
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: -10%;
+  float: right;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+
+}
 .menu_btn {
   background: transparent !important;
   height: 42px !important;
+  margin-top: -20%;
 
   float: right;
   position: fixed;
@@ -334,5 +388,65 @@ export default {
 }
 html {
   scroll-behavior: smooth;
+}
+.form_contact {
+  align-items: center;
+  float: center;
+  align-self: center;
+}
+.btn_submit {
+  background: #f9a828 !important;
+  font-size: 1.5rem;
+  display: block;
+  letter-spacing: 0.2rem;
+  height: 6rem;
+  line-height: 6rem;
+  padding: 0 3rem;
+  width: 100%;
+  background: #f9a828;
+  color: #000000;
+  margin-top: 0.6rem;
+}
+
+v-form h3 {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+v-text-field {
+  border: white !important;
+  color: white !important;
+}
+v-form input,
+textarea {
+  background: white !important;
+}
+input,
+v-textarea {
+  background: white !important;
+}
+@media only screen and (min-width: 480px) {
+  h1,
+  .products h1,
+  .contact h1 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 30px;
+  }
+
+  .about_us p {
+    font-size: 25px;
+  }
+  .menu {
+      font-size: 30px;
+  cursor: pointer;
+  margin-top: -10%;
+  float: right;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-form>
+    <v-form style="align-content:center" netlify="true">
       <v-container>
-        <h3>SEND US A MESSAGE</h3>
+        <h3 style="align-text:center">SEND US A MESSAGE</h3>
         <v-row>
           <v-col cols="6">
             <input
