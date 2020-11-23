@@ -1,5 +1,5 @@
 ---
 title: ball 6
-description: ball
+description: Ball
 image: uploads/bg.jpg
 ---
