@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import blog1 from '../../product/ball1.md'
+  import blog1 from '../../content/product/ball1.md'
 
   export default {
     computed: {

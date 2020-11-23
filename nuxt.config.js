@@ -41,7 +41,8 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxt/content'
   ],
   /*
   ** vuetify module configuration

@@ -68,6 +68,22 @@
         <div class="text_products">
           <h3>COLLECTIONS</h3>
           <h1>See Our Featured Carpets and Rugs.</h1>
+           <v-row>
+              <v-col cols="12">
+          <div v-for="article in articles" :key="article.id">
+
+            
+            <v-card>
+             
+              {{ article.description }}
+              {{ article.img }}
+              <v-img :src="article.img" height="100px" />
+               
+            </v-card>
+           
+          </div>
+          </v-col>
+            </v-row>
         </div>
       </div>
     </div>
@@ -80,64 +96,68 @@
       </div>
       <v-row>
         <v-col>
-           <div class="form_cont center">
-    <v-form class="form_cont" netlify="true">
-      <v-container class="form_container">
-        <p style="align-text:center">SEND US A MESSAGE</p>
-        <v-row>
-          <v-col cols="6">
-            <input
-            class="col"
-              type="text"
-              color="white"
-              placeholder="Name"
-              outlined
-              v-model="firstname"
-              :rules="nameRules"
-              label="Name"
-              required
-            />
-          </v-col>
-        </v-row>
+          <div class="form_cont center">
+            <v-form class="form_cont" netlify="true">
+              <v-container class="form_container">
+                <p style="align-text:center">SEND US A MESSAGE</p>
+                <v-row>
+                  <v-col cols="6">
+                    <input
+                      class="col"
+                      type="text"
+                      color="white"
+                      placeholder="Name"
+                      outlined
+                      v-model="firstname"
+                      :rules="nameRules"
+                      label="Name"
+                      required
+                    />
+                  </v-col>
+                </v-row>
 
-        <v-row>
-          <v-col cols="3">
-            <input
-            class="col"
-              outlined
-              v-model="firstname"
-              :rules="nameRules"
-              placeholder="Email"
-              required
-            />
-          </v-col>
-          <v-col cols="3">
-            <input
-            class="col"
-              outlined
-              v-model="firstname"
-              :rules="nameRules"
-              placeholder="Subject"
-              required
-            >
-            
-          </v-col>
-        </v-row>
+                <v-row>
+                  <v-col cols="3">
+                    <input
+                      class="col"
+                      outlined
+                      v-model="firstname"
+                      :rules="nameRules"
+                      placeholder="Email"
+                      required
+                    />
+                  </v-col>
+                  <v-col cols="3">
+                    <input
+                      class="col"
+                      outlined
+                      v-model="firstname"
+                      :rules="nameRules"
+                      placeholder="Subject"
+                      required
+                    />
+                  </v-col>
+                </v-row>
 
-        <v-row>
-          <v-col cols="6">
-            <textarea class="col" type="message" outlined placeholder="Message"/>
-          </v-col>
-        </v-row>
+                <v-row>
+                  <v-col cols="6">
+                    <textarea
+                      class="col"
+                      type="message"
+                      outlined
+                      placeholder="Message"
+                    />
+                  </v-col>
+                </v-row>
 
-        <v-row>
-          <v-col cols="6">
-            <v-btn block class="btn_submit">Submit</v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-form>
-  </div>
+                <v-row>
+                  <v-col cols="6">
+                    <v-btn block class="btn_submit">Submit</v-btn>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+          </div>
         </v-col>
       </v-row>
     </div>
@@ -171,6 +191,15 @@
 import contactform from "../components/contactform";
 import footer from "../components/footer";
 export default {
+  async asyncData(context) {
+    const { $content } = context;
+    const articles = await $content("product").fetch();
+
+    return {
+      articles
+    };
+  },
+
   components: {
     contactform,
     footer
@@ -204,7 +233,7 @@ export default {
 .v-parallax_content {
   height: 200vh !important;
 }
-.form_container{
+.form_container {
   margin-left: 25%;
 }
 // div:nth-child(5) {
@@ -270,8 +299,7 @@ export default {
 .theme--light.v-btn {
   color: white;
 }
-.form_cont{
-  
+.form_cont {
 }
 .products {
   background: rgb(152, 150, 150);
@@ -322,17 +350,15 @@ export default {
   align-items: center;
   height: 100vh;
   justify-items: center;
-  
 }
 
 .menu {
   font-size: 30px;
   cursor: pointer;
-  margin-top: -10%;
+  margin-top: -10% !important;
   float: right;
   position: fixed;
   background: rgba(0, 0, 0, 0.4);
-
 }
 .menu_btn {
   background: transparent !important;
@@ -441,12 +467,12 @@ v-textarea {
     font-size: 25px;
   }
   .menu {
-      font-size: 30px;
-  cursor: pointer;
-  margin-top: -10%;
-  float: right;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.4);
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: -10%;
+    float: right;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 </style>
