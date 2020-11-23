@@ -68,22 +68,22 @@
         <div class="text_products">
           <h3>COLLECTIONS</h3>
           <h1>See Our Featured Carpets and Rugs.</h1>
-           <v-row>
-              <v-col cols="12">
-          <div v-for="article in articles" :key="article.id">
 
-            
-            <v-card>
-             
-              {{ article.description }}
-              {{ article.img }}
-              <v-img :src="article.img" height="100px" />
-               
-            </v-card>
+          <div style="margin-top:2%; margin:2%;padding:2%">
            
+              <v-row   >
+                <v-col cols="6" v-for="article in articles" :key="article.id">
+                  <v-card dark class="pro_card">
+                    <v-card-title>
+                  {{ article.description }}</v-card-title>
+                  <v-img :src="article.img"/>
+                   </v-card>
+                </v-col>
+              </v-row>
+            
+            <img src="../static/uploads/ball.jpg" height="100px" />
           </div>
-          </v-col>
-            </v-row>
+          
         </div>
       </div>
     </div>
@@ -108,8 +108,6 @@
                       color="white"
                       placeholder="Name"
                       outlined
-                      v-model="firstname"
-                      :rules="nameRules"
                       label="Name"
                       required
                     />
@@ -118,21 +116,12 @@
 
                 <v-row>
                   <v-col cols="3">
-                    <input
-                      class="col"
-                      outlined
-                      v-model="firstname"
-                      :rules="nameRules"
-                      placeholder="Email"
-                      required
-                    />
+                    <input class="col" outlined placeholder="Email" required />
                   </v-col>
                   <v-col cols="3">
                     <input
                       class="col"
                       outlined
-                      v-model="firstname"
-                      :rules="nameRules"
                       placeholder="Subject"
                       required
                     />
@@ -207,6 +196,7 @@ export default {
   data() {
     return {
       bar: false,
+      padless:false,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
     };
   },
@@ -239,7 +229,10 @@ export default {
 // div:nth-child(5) {
 //   background-image: url("../assets/hello.jpeg");
 // }
-
+.pro_card{
+  cursor: pointer;
+  
+}
 .home {
   height: 150vh;
 }
@@ -306,7 +299,8 @@ export default {
   align-content: center;
   text-align: center;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
+  height: max-content;
 }
 .products h3,
 .text_contact h3 {
@@ -473,6 +467,10 @@ v-textarea {
     float: right;
     position: fixed;
     background: rgba(0, 0, 0, 0.4);
+  }
+  v-card:hover
+  {
+    cursor: pointer;
   }
 }
 </style>
