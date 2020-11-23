@@ -70,20 +70,62 @@
           <h1>See Our Featured Carpets and Rugs.</h1>
 
           <div style="margin-top:2%; margin:2%;padding:2%">
-           
-              <v-row   >
-                <v-col cols="6" v-for="article in articles" :key="article.id">
-                  <v-card dark class="pro_card">
-                    <v-card-title>
-                  {{ article.description }}</v-card-title>
-                  <v-img :src="article.img"/>
-                   </v-card>
-                </v-col>
-              </v-row>
-            
-            <img src="../static/uploads/ball.jpg" height="100px" />
+            <v-row>
+              <v-col
+                cols="6"
+                sm="6"
+                v-for="article in articles"
+                :key="article.id"
+              >
+                <div class="pro_card">
+                  <!-- <v-card-title> -->
+                  <!-- {{ article.description }}</v-card-title> -->
+                  <img
+                    @click.stop="dialog = true"
+                    :src="article.img"
+                    height="300px"
+                    width="450px"
+                  />
+                </div>
+                <!-- <template>
+                <v-dialog v-model="dialog" max-width="290">
+                  <v-card>
+                    <v-card-title class="headline">
+                      Use Google's location service?
+                    </v-card-title>
+
+                    <v-card-text>
+                      Let Google help apps determine location. This means
+                      sending anonymous location data to Google, even when no
+                      apps are running.
+                    </v-card-text>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+
+                      <v-btn
+                        color="green darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Disagree
+                      </v-btn>
+
+                      <v-btn
+                        color="green darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Agree
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+                </template> -->
+
+              </v-col>
+            </v-row>
           </div>
-          
         </div>
       </div>
     </div>
@@ -163,7 +205,7 @@
                 {{ icon }}
               </v-icon>
             </v-btn>
-          </v-card-text>
+          </v-card-text>  
 
           <v-divider></v-divider>
 
@@ -196,7 +238,8 @@ export default {
   data() {
     return {
       bar: false,
-      padless:false,
+      dialog: false,
+      padless: false,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
     };
   },
@@ -229,9 +272,8 @@ export default {
 // div:nth-child(5) {
 //   background-image: url("../assets/hello.jpeg");
 // }
-.pro_card{
+.pro_card {
   cursor: pointer;
-  
 }
 .home {
   height: 150vh;
@@ -468,8 +510,7 @@ v-textarea {
     position: fixed;
     background: rgba(0, 0, 0, 0.4);
   }
-  v-card:hover
-  {
+  v-card:hover {
     cursor: pointer;
   }
 }
