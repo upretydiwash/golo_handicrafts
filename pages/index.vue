@@ -1,53 +1,62 @@
 <template>
-  <div>
-    <!-- firstdiv -->
-    <div>
-      <div class="cover">
-        <template>
-          <v-parallax
-            height="800"
-            style="max-width:100%"
-            :src="require('../assets/cover.jpg')"
-          >
-            <div>
-              <span class="menu" @click="openNav()"> MENU &#9776;</span>
-            </div>
-            <div id="mySidenav" class="sidenav" close-on-content-click>
-              <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
-                >&times;</a
-              >
-              <a href="#" @click="closeNav()">Home</a>
-              <a href="#about" @click="closeNav()">About</a>
-              <a href="#product" @click="closeNav()">Collection</a>
-              <a href="#contact" @click="closeNav()">Contact</a>
-            </div>
-            <div v-if="bar">
-              <v-card> HELLO</v-card>
-            </div>
+  <div id="app" >
+    <!-- Home -->
+    <div id="home">
+      <div class="overlay ">
+        <v-app-bar  dark class="nav_bar">
+          {{width}}
+          <v-toolbar-title
+            ><img
+              src="../static/uploads/logo.jpg"
+              height="100"
+              width="150"
+              style="max-height:auto;min-width:auto,"
+          /></v-toolbar-title>
+          <v-spacer />
+          <div class="appbar_content">
+             <v-btn href="#home">HOME</v-btn> 
+             <v-btn href="#about">ABOUT</v-btn> 
+             <v-btn href="#product"> COLLECTION</v-btn> 
+             <v-btn href="#contact">CONTACT</v-btn> 
+          </div>
+        </v-app-bar>
 
-            <div class="cover_text">
-              <img
+        <template>
+          <div class="overlay">
+            <v-parallax
+              height="800"
+              class="overlay"
+              :src="require('../assets/cover.jpg')"
+            >
+              <div v-if="bar">
+                <v-card> HELLO</v-card>
+              </div>
+
+              <div class="cover_text ">
+                <!-- <img
                 src="../static/uploads/logo.jpg"
                 height="150"
                 width="150"
                 alt=""
-              />
-              <h1>
-                Authentic handmade felt.
-              </h1>
-            </div>
-            <div class="btn_cover">
-              <v-btn height="50px" width="150px" outlined href="#about"
-                >LEARN MORE</v-btn
-              >
-            </div>
-          </v-parallax>
+              /> -->
+                <h1>
+                  Authentic handmade felt.
+                </h1>
+              </div>
+              <div class="btn_cover">
+                <v-btn height="50px" width="150px" outlined href="#about"
+                  >LEARN MORE</v-btn
+                >
+              </div>
+            </v-parallax>
+          </div>
         </template>
       </div>
     </div>
 
     <!--About div -->
-    <div class="about_us" id="about">
+    <div class="overlay">
+    <div class="about_us " id="about">
       <div class="container">
         <h2 style="margin-top:5rem">
           ABOUT US
@@ -61,7 +70,7 @@
         </p>
       </div>
     </div>
-
+</div>
     <!-- Product Div -->
     <div class="products" id="product">
       <div class="container">
@@ -73,22 +82,23 @@
             <v-row>
               <v-col
                 cols="6"
-                sm="6"
+                
                 v-for="article in articles"
                 :key="article.id"
               >
-                <div class="pro_card">
+                <div class="pro_card container" data-app >
                   <!-- <v-card-title> -->
                   <!-- {{ article.description }}</v-card-title> -->
-                  <img
-                    @click.stop="dialog = true"
+                  <img 
                     :src="article.img"
-                    height="300px"
-                    width="450px"
+                    class="responsive"
+                                        @click.stop="dialog = true"
+
                   />
-                </div>
-                <!-- <template>
-                <v-dialog v-model="dialog" max-width="290">
+                  <!-- <div class="middle">
+                    <div class="text">{{ article.description }}</div>
+                  </div> -->
+                    <!-- <v-dialog v-model="dialog" max-width="290">
                   <v-card>
                     <v-card-title class="headline">
                       Use Google's location service?
@@ -120,9 +130,11 @@
                       </v-btn>
                     </v-card-actions>
                   </v-card>
-                </v-dialog>
-                </template> -->
-
+                </v-dialog> -->
+              
+                </div>
+                
+                
               </v-col>
             </v-row>
           </div>
@@ -131,6 +143,7 @@
     </div>
 
     <!-- Contact us -->
+    <div class="overlay">
     <div class="contact " id="contact">
       <div class="container text_contact ">
         <h3>Contact</h3>
@@ -192,7 +205,7 @@
         </v-col>
       </v-row>
     </div>
-
+</div>
     <template>
       <v-footer
         style="text-align:center; margin:0px; padding:0px; background:black "
@@ -205,7 +218,7 @@
                 {{ icon }}
               </v-icon>
             </v-btn>
-          </v-card-text>  
+          </v-card-text>
 
           <v-divider></v-divider>
 
@@ -222,6 +235,8 @@
 import contactform from "../components/contactform";
 import footer from "../components/footer";
 export default {
+  el:'#app',
+  
   async asyncData(context) {
     const { $content } = context;
     const articles = await $content("product").fetch();
@@ -240,7 +255,8 @@ export default {
       bar: false,
       dialog: false,
       padless: false,
-      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      width: this.a
     };
   },
   methods: {
@@ -250,6 +266,11 @@ export default {
 
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
+    },
+    getInnerWidth(){
+      var a = window.innerWidth
+      this.width = a
+      
     }
   }
 };
@@ -265,6 +286,58 @@ export default {
 // }
 .v-parallax_content {
   height: 200vh !important;
+  width: 100%;
+  opacity: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.overlay {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
+opacity: 1;
+  background: -moz-linear-gradient(
+    left,
+    rgba(107, 77, 168, 0.85) 0%,
+    rgba(73, 119, 194, 0.85) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    rgba(107, 77, 168, 0.85) 0%,
+    rgba(73, 119, 194, 0.85) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    rgba(107, 77, 168, 0.85) 0%,
+    rgba(73, 119, 194, 0.85) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 ); /* IE6-9 */
+}
+.centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+.nav_item a {
+  text-align: center !important;
+  align-content: center;
+  padding: 10px;
+  margin: 10px;
+}
+.cover_card {
+  align-items: center;
+  text-align: center;
+  color: grey !important;
+}
+
+.appbar_content {
+  background: transparent !important;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
 }
 .form_container {
   margin-left: 25%;
@@ -274,19 +347,38 @@ export default {
 // }
 .pro_card {
   cursor: pointer;
+  text-align: center !important;
 }
+.pro_card div{
+  text-align: center;
+}
+.pro_card:hover .centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+a {
+  text-decoration: none;
+}
+.nav_bar {
+  align-content: center;
+  text-align: center;
+}
+
 .home {
   height: 150vh;
 }
+
 // .img{
 //   height: 100vh;
 // }
 .about_us {
   font-family: "montserrat-bold", sans-serif;
   text-align: center;
-  background: #eeecec;
+    // background: #e9e9e9;
 
-  color: #07617d;
+  color: white;
   min-height: 100vh;
   height: max-content;
 }
@@ -294,7 +386,7 @@ export default {
   font-family: "librebaskerville-bold", serif;
   font-size: 3rem;
   line-height: 1.8;
-  color: #2e383f;
+  color: white;
   margin-top: 5rem;
 }
 .cover_text {
@@ -303,6 +395,7 @@ export default {
   font-size: 2.2rem;
   color: white;
   text-transform: uppercase;
+  margin-top: -5% !important;
   letter-spacing: 0.3rem;
   margin: 0 0 0.9rem 0;
   padding: 10%;
@@ -337,26 +430,29 @@ export default {
 .form_cont {
 }
 .products {
-  background: rgb(152, 150, 150);
+  background: #e9e9e9;
   align-content: center;
   text-align: center;
-  color: white;
+  color: black;
   min-height: 100vh;
   height: max-content;
 }
 .products h3,
 .text_contact h3 {
-  color: rgba(242, 242, 242, 0.5);
+  color: black;
   font-family: "montserrat-bold", sans-serif;
   font-size: 1.8 rem;
   line-height: 1.667;
-  color: rgba(242, 242, 242, 0.5);
+  // color: rgba(242, 242, 242, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   margin-bottom: 1.2rem;
 }
+.text_contact h3 {
+  color: white !important;
+}
 .products h1 {
-  color: #ffffff;
+  color: black;
   font-family: "librebaskerville-bold", serif;
   font-size: 2.8rem;
   line-height: 1.375;
@@ -365,6 +461,7 @@ export default {
   padding-right: 17%;
 }
 .text_products {
+  color: #000000;
   padding: 8%;
   justify-content: center;
 }
@@ -379,7 +476,7 @@ export default {
   display: block;
 }
 .contact {
-  background: rgb(17, 16, 16);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
   color: white;
   padding: 7%;
   align-content: center !important;
@@ -439,6 +536,54 @@ export default {
   font-size: 36px;
   margin-left: 50px;
 }
+.responsive {
+  width: 100%;
+  opacity: 1;
+  height: auto;
+  max-height: 250px;
+  display: block;
+  max-width: 350px;
+  transition: transform 0.2s;
+}
+// .middle {
+//   transition: 0.5s ease;
+//   opacity: 0;
+
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   -ms-transform: translate(-50%, -50%);
+//   text-align: center !important;
+// }
+// .middle > div {
+//   text-align: center !important;
+// }
+// .pro_card:hover .responsive {
+//   opacity: 0.3;
+// }
+
+// .pro_card:hover .middle {
+//   opacity: 1;
+//   align-content: center;
+//   text-align: center !important;
+// }
+
+// .text {
+//   // background-color: #4CAF50;
+//   color: black;
+//   text-transform: uppercase;
+//   font-size: 16px;
+//     font-family: "montserrat-bold", sans-serif;
+
+//   // padding: 16px 32px;
+//   // margin-left: 50%;
+//   // margin-right: 50%;
+// }
+.responsive:hover {
+  transform: scale(1.2);
+  transition-delay: 0.1ms;
+  
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
@@ -457,7 +602,7 @@ html {
   align-self: center;
 }
 .btn_submit {
-  background: #f9a828 !important;
+  background: transparent !important;
   font-size: 1.5rem;
   display: block;
   letter-spacing: 0.2rem;
@@ -509,6 +654,12 @@ v-textarea {
     float: right;
     position: fixed;
     background: rgba(0, 0, 0, 0.4);
+  }
+  img {
+    max-width: auto;
+    max-height: auto;
+    min-width: auto;
+    min-height: auto;
   }
   v-card:hover {
     cursor: pointer;
