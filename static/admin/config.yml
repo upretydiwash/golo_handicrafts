@@ -25,5 +25,5 @@ collections:
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields:
       - {label: "Title", name: 'title', widget: 'string'}
-       - {label: "Content", name: 'Content', widget: 'string'}
+      - {label: "Content", name: 'Content', widget: 'string'}
      
