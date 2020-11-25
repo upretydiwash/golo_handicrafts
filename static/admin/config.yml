@@ -23,5 +23,7 @@ collections:
     folder: "content/post"
     create: true
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: 
-      - {label: "Body", name: "body", widget: "markdown"}
+    fields:
+      -{label: "Title", name: 'title', widget: 'string'}
+       -{label: "Content", name: 'Content', widget: 'string'}
+     

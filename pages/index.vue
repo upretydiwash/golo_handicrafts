@@ -40,7 +40,8 @@
                 width="150"
                 alt=""
               /> -->
-                <h1 v-html="covertext">
+                <h1 >
+                  {{a[2].Content}}
                 </h1>
               </div>
               <div class="btn_cover">
@@ -61,8 +62,8 @@
         <h2 style="margin-top:5rem">
           ABOUT US
         </h2>
-        <p v-html="about">
-          
+        <p  >
+        {{a[0].Content}}
         </p>
       </div>
     </div>
@@ -72,7 +73,7 @@
       <div class="container">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
-          <h1 v-html="collectiontext"></h1>
+          <h1 >{{a[1].Content}}</h1>
 
           <div style="margin-top:2%; margin:2%;padding:2%">
             <v-row>
@@ -240,11 +241,21 @@ export default {
   async asyncData(context) {
     const { $content } = context;
     const articles = await $content("product").fetch();
+    const a = await $content("post").fetch();
 
     return {
-      articles
-    };
+      articles,a
+    }
   },
+
+//  async asyncData(context) {
+//     const { $content } = context;
+//     const a = await $content("post").fetch();
+
+//     return {
+//       a
+//     };
+//   },
   computed:{
 about(){
   return about

@@ -1,2 +1,4 @@
-
- AUTHENTIC HANDMADE FELT.
+---
+title: 'Cover Text'
+Content: 'AUTHENTIC HANDMADE FELT.'
+--- 

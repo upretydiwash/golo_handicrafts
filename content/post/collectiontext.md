@@ -1,1 +1,6 @@
-See Our Featured Carpets and Rugs.
+---
+
+title: 'Collection Text'
+Content: 'See Our Featured Carpets and Rugs.' 
+
+---
