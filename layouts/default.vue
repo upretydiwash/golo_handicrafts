@@ -2,7 +2,10 @@
   <div>
     <!-- <nuxt-link to="/" >  <h1 style="text-decoration:underline">My Blogs</h1> </nuxt-link>  -->
 
+  
+  
     <nuxt />
+    
    <footer/>
   </div>
 </template>
@@ -10,6 +13,11 @@
 <script>
 import footer from "../components/footer";
 export default {
+  inject: {
+      theme: {
+        default: { isDark: false },
+      },
+    },
   components: {
     footer
   },
@@ -37,9 +45,13 @@ export default {
       rightDrawer: false,
       title: "Vuetify.js"
     };
-  }
+  },
+  mounted() {
+window.onload    
+  },
 };
 </script>
+
 <style lang="scss">
 .footer {
   text-align: center;

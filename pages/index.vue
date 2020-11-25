@@ -2,7 +2,7 @@
   <div id="app" >
     <!-- Home -->
     <div id="home">
-      <div class="overlay ">
+      <div  >
         <v-app-bar  dark class="nav_bar">
           <div></div>
           <v-toolbar-title
@@ -23,10 +23,11 @@
         </v-app-bar>
 
         <template>
-          <div class="overlay">
+          <div >
             <v-parallax
-              height="800"
-              class="overlay"
+              height="700"
+              
+              
               :src="require('../assets/cover.jpg')"
             >
               <div v-if="bar">
@@ -317,9 +318,15 @@ logo()
   width: 100%;
   opacity: 1;
   overflow: hidden;
-  position: relative;
+  
 }
+.v-parallax__image {
+  height: 1800px !important;
+  min-height: 400px !important;
+  min-width: 50% !important;
+  width: 100% !important;
 
+}
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
 opacity: 1;
@@ -671,6 +678,15 @@ v-textarea {
   h3 {
     font-size: 30px;
   }
+  .v-parallax__image {
+
+  height: 1800px !important;
+  // min-height: 400px !important;
+  min-width: 800px !important;
+  // max-width: 250px !important;
+  // width: 100% !important;
+
+}
 
   .about_us p {
     font-size: 25px;
