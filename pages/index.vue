@@ -4,8 +4,9 @@
     <div id="home">
       <div class="overlay ">
         <v-app-bar  dark class="nav_bar">
-          {{width}}
+          <div></div>
           <v-toolbar-title
+          
             ><img
               src="../static/uploads/logo.jpg"
               height="100"
@@ -39,8 +40,7 @@
                 width="150"
                 alt=""
               /> -->
-                <h1>
-                  Authentic handmade felt.
+                <h1 v-html="covertext">
                 </h1>
               </div>
               <div class="btn_cover">
@@ -61,12 +61,8 @@
         <h2 style="margin-top:5rem">
           ABOUT US
         </h2>
-        <p>
-          SGNP is dedicated in creating finest quality of Tibetan Handmade Rugs.
-          Our team emphasizes on the uniqueness of the Tibetan knotting
-          technique and on the purity of raw materials in creating a pleasing
-          variation in both color and brilliance, making them the perfect and
-          fashionable rugs.
+        <p v-html="about">
+          
         </p>
       </div>
     </div>
@@ -76,7 +72,7 @@
       <div class="container">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
-          <h1>See Our Featured Carpets and Rugs.</h1>
+          <h1 v-html="collectiontext"></h1>
 
           <div style="margin-top:2%; margin:2%;padding:2%">
             <v-row>
@@ -234,6 +230,10 @@
 <script>
 import contactform from "../components/contactform";
 import footer from "../components/footer";
+import about from '../content/post/about.md';
+import covertext from '../content/post/covertext.md';
+import collectiontext from '../content/post/collectiontext.md'
+import logo from '../content/post/logo.md'
 export default {
   el:'#app',
   
@@ -244,6 +244,23 @@ export default {
     return {
       articles
     };
+  },
+  computed:{
+about(){
+  return about
+  console.log(about)
+},
+covertext(){
+  return covertext
+},
+collectiontext(){
+  return collectiontext
+},
+logo()
+{
+  return logo
+}
+
   },
 
   components: {
@@ -663,6 +680,11 @@ v-textarea {
   }
   v-card:hover {
     cursor: pointer;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .nav_bar v-btn {
+    width: 30px !important;
   }
 }
 </style>
