@@ -120,7 +120,7 @@
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
-                    <v-col cols="6">
+                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
                       <input
                         class="col"
                         type="text"
@@ -134,7 +134,7 @@
                   </v-row>
 
                   <v-row>
-                    <v-col cols="3">
+                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
                       <input
                         class="col"
                         outlined
@@ -142,7 +142,7 @@
                         required
                       />
                     </v-col>
-                    <v-col cols="3">
+                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
                       <input
                         class="col"
                         outlined
@@ -153,7 +153,7 @@
                   </v-row>
 
                   <v-row>
-                    <v-col cols="6">
+                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
                       <textarea
                         class="col"
                         type="message"
@@ -164,7 +164,7 @@
                   </v-row>
 
                   <v-row>
-                    <v-col cols="6">
+                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
                       <v-btn block class="btn_submit">Submit</v-btn>
                     </v-col>
                   </v-row>
@@ -800,5 +800,39 @@ v-textarea {
   justify-content: space-between;
   // align-items: center;
   align-items: flex-end;
+}
+@media only screen and (max-width: 600px) {
+  .form_cont {
+    margin-left: -15% !important;
+    margin-right: 10%;
+  }
+  
+}
+@media only screen and (max-width: 400px) , only screen and (min-width: 200px){
+    .image {
+    // float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+    height: 100px !important;
+    width: 100px !important;
+    cursor: pointer;
+  }
+  .image:hover {
+    transform: scale(1.2);
+    transition-delay: 0.1ms;
+  }
+}
+@media only screen and (max-width: 550px){
+   .form_cont {
+    margin-left: -10% !important;
+    margin-right: 15%;
+  }
+  .about_us p{
+    font-size: 20px!important;
+    // text-align: justify;;
+  }
 }
 </style>
