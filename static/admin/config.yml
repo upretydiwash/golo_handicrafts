@@ -26,4 +26,4 @@ collections:
     fields:
       - {label: "Title", name: 'title', widget: 'string'}
       - {label: "Content", name: 'Content', widget: 'markdown'}
-     
+      - {label: 'Image', name: 'img', widget: 'image'}
