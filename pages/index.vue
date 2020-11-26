@@ -1,35 +1,34 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <!-- Home -->
     <div id="home">
-      <div  >
-        <v-app-bar  dark class="nav_bar">
+      <div>
+        <v-app-bar dark class="nav_bar">
           <div></div>
           <v-toolbar-title
-          
             ><img
               src="../static/uploads/logo.jpg"
               height="100"
               width="150"
-              style="max-height:auto;min-width:auto,"
+              class="logo"
           /></v-toolbar-title>
           <v-spacer />
           <div class="appbar_content">
-             <v-btn href="#home">HOME</v-btn> 
-             <v-btn href="#about">ABOUT</v-btn> 
-             <v-btn href="#product"> COLLECTION</v-btn> 
-             <v-btn href="#contact">CONTACT</v-btn> 
+            <ul>
+              <li><a href="#home">HOME </a></li>
+              <li><a href="#about"> ABOUT </a></li>
+              <li><a href="#product"> COLLECTION </a></li>
+              <li><a href="#contact">CONTACT </a></li>
+            </ul>
+          </div>
+          <div class="burger">
+            <v-icon @click="togglenav()">mdi-menu</v-icon>
           </div>
         </v-app-bar>
 
         <template>
-          <div >
-            <v-parallax
-              height="700"
-              
-              
-              :src="require('../assets/cover.jpg')"
-            >
+          <div>
+            <v-parallax height="700" :src="require('../assets/cover.jpg')">
               <div v-if="bar">
                 <v-card> HELLO</v-card>
               </div>
@@ -41,8 +40,8 @@
                 width="150"
                 alt=""
               /> -->
-                <h1 >
-                  {{a[2].Content}}
+                <h1>
+                  {{ a[2].Content }}
                 </h1>
               </div>
               <div class="btn_cover">
@@ -58,83 +57,50 @@
 
     <!--About div -->
     <div class="overlay">
-    <div class="about_us " id="about">
-      <div class="container">
-        <h2 style="margin-top:5rem">
-          ABOUT US
-        </h2>
-        <p  >
-        {{a[0].Content}}
-        </p>
+      <div class="about_us " id="about">
+        <div class="container">
+          <h2 style="margin-top:5rem">
+            ABOUT US
+          </h2>
+          <p>
+            {{ a[0].Content }}
+          </p>
+        </div>
       </div>
     </div>
-</div>
     <!-- Product Div -->
     <div class="products" id="product">
       <div class="container">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
-          <h1 >{{a[1].Content}}</h1>
-
-          <div style="margin-top:2%; margin:2%;padding:2%">
-            <v-row>
-              <v-col
-                cols="6"
-                
-                v-for="article in articles"
-                :key="article.id"
-              >
-                <div class="pro_card container" data-app >
-                  <!-- <v-card-title> -->
-                  <!-- {{ article.description }}</v-card-title> -->
-                  <img 
-                    :src="article.img"
-                    class="responsive"
-                                        @click.stop="dialog = true"
-
-                  />
-                  <!-- <div class="middle">
-                    <div class="text">{{ article.description }}</div>
-                  </div> -->
-                    <!-- <v-dialog v-model="dialog" max-width="290">
-                  <v-card>
-                    <v-card-title class="headline">
-                      Use Google's location service?
-                    </v-card-title>
-
-                    <v-card-text>
-                      Let Google help apps determine location. This means
-                      sending anonymous location data to Google, even when no
-                      apps are running.
-                    </v-card-text>
-
-                    <v-card-actions>
-                      <v-spacer></v-spacer>
-
-                      <v-btn
-                        color="green darken-1"
-                        text
-                        @click="dialog = false"
-                      >
-                        Disagree
-                      </v-btn>
-
-                      <v-btn
-                        color="green darken-1"
-                        text
-                        @click="dialog = false"
-                      >
-                        Agree
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog> -->
-              
-                </div>
-                
-                
-              </v-col>
-            </v-row>
+          <h1>{{ a[1].Content }}</h1>
+          <div>
+            <gallery
+              :items="
+                articles.map((article,index) => {
+                  return {
+                    id:index+1,
+                    href: article.img,
+                    description: article.description,
+                    markdown: article.description
+                  
+                  };
+                })
+              "
+              :origin="origin"
+              @close="origin = null"
+            ></gallery>
+            <div
+              class="image"
+              v-for="(image, index) in articles"
+              :key="index"
+              @click="origin = index"
+              :style="{
+                backgroundImage: 'url(' + image.img + ')',
+                width: '200px',
+                height: '200px'
+              }"
+            ><figcaption class="centered">{{image.title}} </figcaption></div>
           </div>
         </div>
       </div>
@@ -142,68 +108,73 @@
 
     <!-- Contact us -->
     <div class="overlay">
-    <div class="contact " id="contact">
-      <div class="container text_contact ">
-        <h3>Contact</h3>
-        <h1>Get In Touch.</h1>
+      <div class="contact " id="contact">
+        <div class="container text_contact ">
+          <h3>Contact</h3>
+          <h1>Get In Touch.</h1>
+        </div>
+        <v-row>
+          <v-col>
+            <div class="form_cont center">
+              <v-form class="form_cont" netlify="true">
+                <v-container class="form_container">
+                  <p style="align-text:center">SEND US A MESSAGE</p>
+                  <v-row>
+                    <v-col cols="6">
+                      <input
+                        class="col"
+                        type="text"
+                        color="white"
+                        placeholder="Name"
+                        outlined
+                        label="Name"
+                        required
+                      />
+                    </v-col>
+                  </v-row>
+
+                  <v-row>
+                    <v-col cols="3">
+                      <input
+                        class="col"
+                        outlined
+                        placeholder="Email"
+                        required
+                      />
+                    </v-col>
+                    <v-col cols="3">
+                      <input
+                        class="col"
+                        outlined
+                        placeholder="Subject"
+                        required
+                      />
+                    </v-col>
+                  </v-row>
+
+                  <v-row>
+                    <v-col cols="6">
+                      <textarea
+                        class="col"
+                        type="message"
+                        outlined
+                        placeholder="Message"
+                      />
+                    </v-col>
+                  </v-row>
+
+                  <v-row>
+                    <v-col cols="6">
+                      <v-btn block class="btn_submit">Submit</v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-form>
+            </div>
+          </v-col>
+        </v-row>
       </div>
-      <v-row>
-        <v-col>
-          <div class="form_cont center">
-            <v-form class="form_cont" netlify="true">
-              <v-container class="form_container">
-                <p style="align-text:center">SEND US A MESSAGE</p>
-                <v-row>
-                  <v-col cols="6">
-                    <input
-                      class="col"
-                      type="text"
-                      color="white"
-                      placeholder="Name"
-                      outlined
-                      label="Name"
-                      required
-                    />
-                  </v-col>
-                </v-row>
-
-                <v-row>
-                  <v-col cols="3">
-                    <input class="col" outlined placeholder="Email" required />
-                  </v-col>
-                  <v-col cols="3">
-                    <input
-                      class="col"
-                      outlined
-                      placeholder="Subject"
-                      required
-                    />
-                  </v-col>
-                </v-row>
-
-                <v-row>
-                  <v-col cols="6">
-                    <textarea
-                      class="col"
-                      type="message"
-                      outlined
-                      placeholder="Message"
-                    />
-                  </v-col>
-                </v-row>
-
-                <v-row>
-                  <v-col cols="6">
-                    <v-btn block class="btn_submit">Submit</v-btn>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-form>
-          </div>
-        </v-col>
-      </v-row>
     </div>
-</div>
     <template>
       <v-footer
         style="text-align:center; margin:0px; padding:0px; background:black "
@@ -232,52 +203,49 @@
 <script>
 import contactform from "../components/contactform";
 import footer from "../components/footer";
-import about from '../content/post/about.md';
-import covertext from '../content/post/covertext.md';
-import collectiontext from '../content/post/collectiontext.md'
-import logo from '../content/post/logo.md'
+import about from "../content/post/about.md";
+import covertext from "../content/post/covertext.md";
+import collectiontext from "../content/post/collectiontext.md";
+import logo from "../content/post/logo.md";
+import "vue-blueimp-gallery/dist/vue-blueimp-gallery.css";
+import gallery from "vue-blueimp-gallery";
+// import VueGallery from "vue-gallery";
 export default {
-  el:'#app',
-  
+  el: "#app",
+
   async asyncData(context) {
     const { $content } = context;
     const articles = await $content("product").fetch();
     const a = await $content("post").fetch();
-
+console.table(a[0].Content,a[1].Content,a[2].Content,a[3].Content)
+console.log(a)
     return {
-      articles,a
-    }
+   
+   articles,
+      a: a.sort((a,b) => a.id-b.id)
+    };
   },
 
-//  async asyncData(context) {
-//     const { $content } = context;
-//     const a = await $content("post").fetch();
-
-//     return {
-//       a
-//     };
-//   },
-  computed:{
-about(){
-  return about
-  console.log(about)
-},
-covertext(){
-  return covertext
-},
-collectiontext(){
-  return collectiontext
-},
-logo()
-{
-  return logo
-}
-
+  computed: {
+    about() {
+      return about;
+      console.log(about);
+    },
+    covertext() {
+      return covertext;
+    },
+    collectiontext() {
+      return collectiontext;
+    },
+    logo() {
+      return logo;
+    }
   },
 
   components: {
     contactform,
-    footer
+    footer,
+    gallery
   },
   data() {
     return {
@@ -285,7 +253,14 @@ logo()
       dialog: false,
       padless: false,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
-      width: this.a
+      images1: [
+        "https://dummyimage.com/800/ffffff/000000",
+        "https://dummyimage.com/1600/ffffff/000000",
+        "https://dummyimage.com/1280/000000/ffffff",
+        "https://dummyimage.com/400/000000/ffffff"
+      ],
+origin:null,
+      index: null
     };
   },
   methods: {
@@ -296,10 +271,12 @@ logo()
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
     },
-    getInnerWidth(){
-      var a = window.innerWidth
-      this.width = a
-      
+    getInnerWidth() {
+      var a = window.innerWidth;
+      this.width = a;
+    },
+    tooglenav() {
+      $(".appbar_content");
     }
   }
 };
@@ -318,18 +295,19 @@ logo()
   width: 100%;
   opacity: 1;
   overflow: hidden;
-  
 }
 .v-parallax__image {
   height: 1800px !important;
   min-height: 400px !important;
   min-width: 50% !important;
   width: 100% !important;
-
+}
+.burger {
+  display: none;
 }
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
-opacity: 1;
+  opacity: 1;
   background: -moz-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
@@ -349,10 +327,13 @@ opacity: 1;
 }
 .centered {
   position: relative;
+  background: black;
+  opacity: 0.5;
+  color: white;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  visibility: hidden;
+  // visibility: hidden;
 }
 .nav_item a {
   text-align: center !important;
@@ -373,6 +354,7 @@ opacity: 1;
   border: none;
   cursor: pointer;
   overflow: hidden;
+  display: flex;
 }
 .form_container {
   margin-left: 25%;
@@ -384,7 +366,21 @@ opacity: 1;
   cursor: pointer;
   text-align: center !important;
 }
-.pro_card div{
+.image {
+  float: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center center center;
+  border: 1px solid #ebebeb;
+  margin: 7px;
+
+  cursor: pointer;
+}
+.image:hover {
+  transform: scale(1.2);
+  transition-delay: 0.1ms;
+}
+.pro_card div {
   text-align: center;
 }
 .pro_card:hover .centered {
@@ -396,9 +392,29 @@ opacity: 1;
 a {
   text-decoration: none;
 }
-.nav_bar {
+.appbar_content ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.appbar_content {
   align-content: center;
   text-align: center;
+  display: flex;
+}
+.appbar_content li {
+  list-style: none !important;
+}
+.appbar_content li a {
+  text-decoration: none;
+  color: white;
+  padding: 2rem;
+}
+.nav_bar li:hover {
+  background: #818181;
+}
+* {
+  box-sizing: border-box;
 }
 
 .home {
@@ -411,7 +427,7 @@ a {
 .about_us {
   font-family: "montserrat-bold", sans-serif;
   text-align: center;
-    // background: #e9e9e9;
+  // background: #e9e9e9;
 
   color: white;
   min-height: 100vh;
@@ -516,7 +532,8 @@ a {
   padding: 7%;
   align-content: center !important;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: max-content;
   justify-items: center;
 }
 
@@ -617,7 +634,6 @@ a {
 .responsive:hover {
   transform: scale(1.2);
   transition-delay: 0.1ms;
-  
 }
 
 @media screen and (max-height: 450px) {
@@ -679,14 +695,12 @@ v-textarea {
     font-size: 30px;
   }
   .v-parallax__image {
-
-  height: 1800px !important;
-  // min-height: 400px !important;
-  min-width: 800px !important;
-  // max-width: 250px !important;
-  // width: 100% !important;
-
-}
+    height: 1800px !important;
+    // min-height: 400px !important;
+    min-width: 800px !important;
+    // max-width: 250px !important;
+    // width: 100% !important;
+  }
 
   .about_us p {
     font-size: 25px;
@@ -713,5 +727,77 @@ v-textarea {
   .nav_bar v-btn {
     width: 30px !important;
   }
+}
+
+@media only screen and (max-width: 550px,) {
+  .logo {
+    height: auto;
+    width: auto;
+    // max-width: 50px;
+    min-width: 80px !important;
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 150px) {
+  .image {
+    // float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    border: 1px solid #ebebeb;
+    margin: 20px;
+    height: 100px !important;
+    width: 100px !important;
+    cursor: pointer;
+  }
+  .image:hover {
+    transform: scale(1.2);
+    transition-delay: 0.1ms;
+  }
+  .burger {
+    display: flex;
+    cursor: pointer;
+  }
+  .appbar_content {
+    // display: none;
+  }
+  .appbar_content {
+    flex-direction: column !important;
+    align-items: flex-start;
+    text-align: center !important;
+    margin-top: 70%;
+    width: 100%;
+  }
+  .appbar_content li {
+    padding: 2%;
+    text-align: center;
+
+    // margin-left:-40% ;
+  }
+  .appbar_content li a {
+    padding: 0.5rem 1rem;
+  }
+  .appbar_content ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  .appbar_content.active {
+    display: flex;
+  }
+  .nav_bar {
+    flex-direction: column !important;
+    height: 30vh !important;
+    align-items: flex-start;
+    padding: 0px !important;
+  }
+}
+.logo {
+  height: 100px;
+  width: 100px;
+}
+.nav_bar {
+  // display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  align-items: flex-end;
 }
 </style>

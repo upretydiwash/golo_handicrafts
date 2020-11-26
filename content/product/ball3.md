@@ -1,5 +1,5 @@
 ---
 title: ball 3
-description: 'ball'
+description: 'Peacock Shaped'
 img: 'uploads/Ball3.jpg'
 ---
