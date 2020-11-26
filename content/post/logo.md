@@ -1,5 +1,6 @@
 ---
-id: 3
+id: 4
+title: 'Logo Image'
 img: 'uploads/logo.jpg'
-Content: 'sfdffhgf'
+
 ---

@@ -7,7 +7,7 @@
           <div></div>
           <v-toolbar-title
             ><img
-              src="../static/uploads/logo.jpg"
+              :src="a[4].img"
               height="100"
               width="150"
               class="logo"
@@ -41,7 +41,7 @@
                 alt=""
               /> -->
                 <h1>
-                  {{ a[2].Content }}
+                  {{ a[3].Content }}
                 </h1>
               </div>
               <div class="btn_cover">
@@ -73,7 +73,7 @@
       <div class="container">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
-          <h1>{{ a[1].Content }}</h1>
+          <h1>{{ a[2].Content }}</h1>
           <div>
             <gallery
               :items="
@@ -297,6 +297,7 @@ origin:null,
   overflow: hidden;
 }
 .v-parallax__image {
+  
   height: 1800px !important;
   min-height: 400px !important;
   min-width: 50% !important;
