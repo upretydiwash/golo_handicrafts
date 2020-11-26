@@ -808,7 +808,7 @@ v-textarea {
   }
   
 }
-@media only screen and (max-width: 400px) , only screen and (min-width: 200px){
+@media only screen and (max-width: 400px) {
     .image {
     // float: left;
     background-size: cover;
