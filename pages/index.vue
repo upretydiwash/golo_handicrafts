@@ -4,15 +4,6 @@
     <div id="home">
       <div>
         <v-app-bar dark class="nav_bar">
-          <div></div>
-          <v-toolbar-title
-            ><img
-              :src="a[4].img"
-              height="100"
-              width="150"
-              class="logo"
-          /></v-toolbar-title>
-          <v-spacer />
           <div class="appbar_content">
             <ul>
               <li><a href="#home">HOME </a></li>
@@ -21,25 +12,44 @@
               <li><a href="#contact">CONTACT </a></li>
             </ul>
           </div>
-          <div class="burger">
-            <v-icon @click="togglenav()">mdi-menu</v-icon>
-          </div>
+          
+         
+          <v-spacer />
+          
+          <v-toolbar-title
+            ><img
+              :src="a[4].img"
+              
+              class="logo"
+          /></v-toolbar-title> 
+         
+        
         </v-app-bar>
-
-        <template>
+       <template>
+          
           <div>
             <v-parallax height="700" :src="require('../assets/cover.jpg')">
+             <div>
+               
+               <v-icon class="menu" style="color:white" @click="openNav()">mdi-menu</v-icon> 
+              <!-- <span class="menu" style="color:white" @click="openNav()">&#9776;</span> -->
+            </div>
+            <div id="mySidenav" class="sidenav" close-on-content-click>
+              <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
+                >&times;</a
+              >
+              <a href="#" @click="closeNav()">Home</a>
+              <a href="#about" @click="closeNav()">About</a>
+              <a href="#product" @click="closeNav()">Collection</a>
+              <a href="#contact" @click="closeNav()">Contact</a>
+            </div>
+ 
               <div v-if="bar">
                 <v-card> HELLO</v-card>
               </div>
 
               <div class="cover_text ">
-                <!-- <img
-                src="../static/uploads/logo.jpg"
-                height="150"
-                width="150"
-                alt=""
-              /> -->
+<img src="../static/uploads/logo.jpg" class="logo_bef" height="100" width="100">
                 <h1>
                   {{ a[3].Content }}
                 </h1>
@@ -50,6 +60,7 @@
                 >
               </div>
             </v-parallax>
+            
           </div>
         </template>
       </div>
@@ -70,10 +81,10 @@
     </div>
     <!-- Product Div -->
     <div class="products" id="product">
-      <div class="container">
+      <div class="container prod">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
-          <h1>{{ a[2].Content }}</h1>
+          <h1>{{ a[2].Content }}</h1> </div>
           <div>
             <gallery
               :items="
@@ -102,7 +113,7 @@
               }"
             ><figcaption class="centered">{{image.title}} </figcaption></div>
           </div>
-        </div>
+        
       </div>
     </div>
 
@@ -303,12 +314,18 @@ origin:null,
   min-width: 50% !important;
   width: 100% !important;
 }
+.container {
+  min-height: max-content  !important;
+}
 .burger {
+  display: none;
+}
+.logo_bef{
   display: none;
 }
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
-  opacity: 1;
+  
   background: -moz-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
@@ -455,12 +472,14 @@ a {
 
 .logo {
   display: block;
+  position: center center center center;
 
   margin: 0;
   padding: 0;
   outline: 0;
   border: none;
-  width: 190px;
+  height: 90px !important;
+  width: 100px !important;
   height: 37px;
   margin-top: -20%;
   background-size: 190px 65px;
@@ -528,7 +547,7 @@ a {
   display: block;
 }
 .contact {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
+  
   color: white;
   padding: 7%;
   align-content: center !important;
@@ -536,25 +555,30 @@ a {
   min-height: 100vh;
   min-height: max-content;
   justify-items: center;
+  background: url("../assets/contact-bg.jpg")  ;
+  
 }
+.nav_bar{}
 
 .menu {
-  font-size: 30px;
+  font-size: 20px  !important;
+  display: none  !important;
   cursor: pointer;
-  margin-top: -10% !important;
+  margin-top: -15% !important;
   float: right;
   position: fixed;
-  background: rgba(0, 0, 0, 0.4);
+  // background: rgba(0, 0, 0, 0.4);
 }
 .menu_btn {
   background: transparent !important;
   height: 42px !important;
-  margin-top: -20%;
+  margin-top: -2%;
 
   float: right;
   position: fixed;
   display: block;
 }
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -709,10 +733,11 @@ v-textarea {
   .menu {
     font-size: 30px;
     cursor: pointer;
-    margin-top: -10%;
+    // margin-top: 10%;
+    // margin-left: -50%;
     float: right;
     position: fixed;
-    background: rgba(0, 0, 0, 0.4);
+    // background: rgba(0, 0, 0, 0.4);
   }
   img {
     max-width: auto;
@@ -754,42 +779,67 @@ v-textarea {
     transform: scale(1.2);
     transition-delay: 0.1ms;
   }
-  .burger {
-    display: flex;
-    cursor: pointer;
-  }
+  // .burger {
+  //   display: flex;
+  //   cursor: pointer;
+  // }
   .appbar_content {
-    // display: none;
+    display: none;
   }
-  .appbar_content {
-    flex-direction: column !important;
-    align-items: flex-start;
-    text-align: center !important;
-    margin-top: 70%;
-    width: 100%;
-  }
-  .appbar_content li {
-    padding: 2%;
-    text-align: center;
+  .logo_bef{
+  display: inline  !important;
+}
+.nav_bar{
+  display: none;
+}
+  .menu {
+  font-size: 30px  !important;
+  display: inline  !important;
+  cursor: pointer;
+  margin-top: -40% !important;
+  float: right;
+  position: absolute !important;
+  // background: rgba(0, 0, 0, 0.4);
+}
+.menu_btn {
+  // background: transparent !important;
+  height: 42px !important;
+  margin-top: -2%;
 
-    // margin-left:-40% ;
-  }
-  .appbar_content li a {
-    padding: 0.5rem 1rem;
-  }
-  .appbar_content ul {
-    flex-direction: column;
-    width: 100%;
-  }
-  .appbar_content.active {
-    display: flex;
-  }
-  .nav_bar {
-    flex-direction: column !important;
-    height: 30vh !important;
-    align-items: flex-start;
-    padding: 0px !important;
-  }
+  float: right;
+  position: fixed;
+  display: block;
+}
+
+  // .appbar_content {
+  //   flex-direction: column !important;
+  //   align-items: flex-start;
+  //   text-align: center !important;
+  //   margin-top: 70%;
+  //   width: 100%;
+  // }
+  // .appbar_content li {
+  //   padding: 2%;
+  //   text-align: center;
+
+  //   // margin-left:-40% ;
+  // }
+  // .appbar_content li a {
+  //   padding: 0.5rem 1rem;
+  // }
+  // .appbar_content ul {
+  //   flex-direction: column;
+  //   width: 100%;
+  // }
+  // .appbar_content.active {
+  //   display: flex;
+  // }
+  // .nav_bar {
+  //   flex-direction: column !important;
+  //   height: 30vh !important;
+  //   align-items: flex-start;
+  //   padding: 0px !important;
+  // }
 }
 .logo {
   height: 100px;
@@ -833,6 +883,14 @@ v-textarea {
   .about_us p{
     font-size: 20px!important;
     // text-align: justify;;
+  }
+}
+@media only screen and (max-width:350px) {
+  .products{
+    // min-height: max-content !important;
+  }
+  .container {
+    min-height: max-content !important;
   }
 }
 </style>
