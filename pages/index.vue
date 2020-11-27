@@ -12,44 +12,44 @@
               <li><a href="#contact">CONTACT </a></li>
             </ul>
           </div>
-          
-         
+
           <v-spacer />
-          
-          <v-toolbar-title
-            ><img
-              :src="a[4].img"
-              
-              class="logo"
-          /></v-toolbar-title> 
-         
-        
+
+          <v-toolbar-title><img :src="a[4].img" class="logo"/></v-toolbar-title>
         </v-app-bar>
-       <template>
-          
+        <template>
           <div>
             <v-parallax height="700" :src="require('../assets/cover.jpg')">
-             <div>
-               
-               <v-icon class="menu" style="color:white" @click="openNav()">mdi-menu</v-icon> 
-              <!-- <span class="menu" style="color:white" @click="openNav()">&#9776;</span> -->
-            </div>
-            <div id="mySidenav" class="sidenav" close-on-content-click>
-              <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
-                >&times;</a
-              >
-              <a href="#" @click="closeNav()">Home</a>
-              <a href="#about" @click="closeNav()">About</a>
-              <a href="#product" @click="closeNav()">Collection</a>
-              <a href="#contact" @click="closeNav()">Contact</a>
-            </div>
- 
+              <div>
+                <v-icon class="menu" style="color:white" @click="openNav()"
+                  >mdi-menu</v-icon
+                >
+                <!-- <span class="menu" style="color:white" @click="openNav()">&#9776;</span> -->
+              </div>
+              <div id="mySidenav" class="sidenav" close-on-content-click>
+                <a
+                  href="javascript:void(0)"
+                  class="closebtn"
+                  @click="closeNav()"
+                  >&times;</a
+                >
+                <a href="#" @click="closeNav()">Home</a>
+                <a href="#about" @click="closeNav()">About</a>
+                <a href="#product" @click="closeNav()">Collection</a>
+                <a href="#contact" @click="closeNav()">Contact</a>
+              </div>
+
               <div v-if="bar">
                 <v-card> HELLO</v-card>
               </div>
 
               <div class="cover_text ">
-<img src="../static/uploads/logo.jpg" class="logo_bef" height="100" width="100">
+                <img
+                  src="../static/uploads/logo.jpg"
+                  class="logo_bef"
+                  height="100"
+                  width="100"
+                />
                 <h1>
                   {{ a[3].Content }}
                 </h1>
@@ -60,7 +60,6 @@
                 >
               </div>
             </v-parallax>
-            
           </div>
         </template>
       </div>
@@ -84,36 +83,37 @@
       <div class="container prod">
         <div class="text_products">
           <h3>COLLECTIONS</h3>
-          <h1>{{ a[2].Content }}</h1> </div>
-          <div>
-            <gallery
-              :items="
-                articles.map((article,index) => {
-                  return {
-                    id:index+1,
-                    href: article.img,
-                    description: article.description,
-                    markdown: article.description
-                  
-                  };
-                })
-              "
-              :origin="origin"
-              @close="origin = null"
-            ></gallery>
-            <div
-              class="image"
-              v-for="(image, index) in articles"
-              :key="index"
-              @click="origin = index"
-              :style="{
-                backgroundImage: 'url(' + image.img + ')',
-                width: '200px',
-                height: '200px'
-              }"
-            ><figcaption class="centered">{{image.title}} </figcaption></div>
+          <h1>{{ a[2].Content }}</h1>
+        </div>
+        <div>
+          <gallery
+            :items="
+              articles.map((article, index) => {
+                return {
+                  id: index + 1,
+                  href: article.img,
+                  description: article.description,
+                  markdown: article.description
+                };
+              })
+            "
+            :origin="origin"
+            @close="origin = null"
+          ></gallery>
+          <div
+            class="image"
+            v-for="(image, index) in articles"
+            :key="index"
+            @click="origin = index"
+            :style="{
+              backgroundImage: 'url(' + image.img + ')',
+              width: '200px',
+              height: '200px'
+            }"
+          >
+            <figcaption class="centered">{{ image.title }}</figcaption>
           </div>
-        
+        </div>
       </div>
     </div>
 
@@ -228,12 +228,11 @@ export default {
     const { $content } = context;
     const articles = await $content("product").fetch();
     const a = await $content("post").fetch();
-console.table(a[0].Content,a[1].Content,a[2].Content,a[3].Content)
-console.log(a)
+    console.table(a[0].Content, a[1].Content, a[2].Content, a[3].Content);
+    console.log(a);
     return {
-   
-   articles,
-      a: a.sort((a,b) => a.id-b.id)
+      articles,
+      a: a.sort((a, b) => a.id - b.id)
     };
   },
 
@@ -264,13 +263,8 @@ console.log(a)
       dialog: false,
       padless: false,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
-      images1: [
-        "https://dummyimage.com/800/ffffff/000000",
-        "https://dummyimage.com/1600/ffffff/000000",
-        "https://dummyimage.com/1280/000000/ffffff",
-        "https://dummyimage.com/400/000000/ffffff"
-      ],
-origin:null,
+
+      origin: null,
       index: null
     };
   },
@@ -282,10 +276,7 @@ origin:null,
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
     },
-    getInnerWidth() {
-      var a = window.innerWidth;
-      this.width = a;
-    },
+
     tooglenav() {
       $(".appbar_content");
     }
@@ -293,14 +284,6 @@ origin:null,
 };
 </script>
 <style lang="scss">
-// .content {
-//   text-align: center;
-//   background-position: fixed;
-//   font-size: xxx-large;
-
-//   background-attachment: fixed;
-//   background-size: cover;
-// }
 .v-parallax_content {
   height: 200vh !important;
   width: 100%;
@@ -308,24 +291,23 @@ origin:null,
   overflow: hidden;
 }
 .v-parallax__image {
-  
   height: 1800px !important;
   min-height: 400px !important;
   min-width: 50% !important;
   width: 100% !important;
 }
 .container {
-  min-height: max-content  !important;
+  min-height: max-content !important;
 }
 .burger {
   display: none;
 }
-.logo_bef{
+.logo_bef {
   display: none;
 }
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
-  
+
   background: -moz-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
@@ -377,9 +359,7 @@ origin:null,
 .form_container {
   margin-left: 25%;
 }
-// div:nth-child(5) {
-//   background-image: url("../assets/hello.jpeg");
-// }
+
 .pro_card {
   cursor: pointer;
   text-align: center !important;
@@ -439,9 +419,6 @@ a {
   height: 150vh;
 }
 
-// .img{
-//   height: 100vh;
-// }
 .about_us {
   font-family: "montserrat-bold", sans-serif;
   text-align: center;
@@ -495,11 +472,8 @@ a {
   background: transparent !important;
 }
 
-.theme--light.v-btn {
-  color: white;
-}
-.form_cont {
-}
+
+
 .products {
   background: #e9e9e9;
   align-content: center;
@@ -547,7 +521,6 @@ a {
   display: block;
 }
 .contact {
-  
   color: white;
   padding: 7%;
   align-content: center !important;
@@ -555,14 +528,12 @@ a {
   min-height: 100vh;
   min-height: max-content;
   justify-items: center;
-  background: url("../assets/contact-bg.jpg")  ;
-  
+  background: url("../assets/contact-bg.jpg");
 }
-.nav_bar{}
 
 .menu {
-  font-size: 20px  !important;
-  display: none  !important;
+  font-size: 20px !important;
+  display: none !important;
   cursor: pointer;
   margin-top: -15% !important;
   float: right;
@@ -622,53 +593,12 @@ a {
   max-width: 350px;
   transition: transform 0.2s;
 }
-// .middle {
-//   transition: 0.5s ease;
-//   opacity: 0;
 
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   -ms-transform: translate(-50%, -50%);
-//   text-align: center !important;
-// }
-// .middle > div {
-//   text-align: center !important;
-// }
-// .pro_card:hover .responsive {
-//   opacity: 0.3;
-// }
-
-// .pro_card:hover .middle {
-//   opacity: 1;
-//   align-content: center;
-//   text-align: center !important;
-// }
-
-// .text {
-//   // background-color: #4CAF50;
-//   color: black;
-//   text-transform: uppercase;
-//   font-size: 16px;
-//     font-family: "montserrat-bold", sans-serif;
-
-//   // padding: 16px 32px;
-//   // margin-left: 50%;
-//   // margin-right: 50%;
-// }
 .responsive:hover {
   transform: scale(1.2);
   transition-delay: 0.1ms;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
-  }
-}
 html {
   scroll-behavior: smooth;
 }
@@ -709,6 +639,14 @@ textarea {
 input,
 v-textarea {
   background: white !important;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 @media only screen and (min-width: 150px) {
   h1,
@@ -763,7 +701,7 @@ v-textarea {
     min-width: 80px !important;
   }
 }
-@media only screen and (max-width: 765px) and (min-width: 150px) {
+@media only screen and (max-width: 700px) and (min-width: 150px) {
   .image {
     // float: left;
     background-size: cover;
@@ -779,67 +717,34 @@ v-textarea {
     transform: scale(1.2);
     transition-delay: 0.1ms;
   }
-  // .burger {
-  //   display: flex;
-  //   cursor: pointer;
-  // }
+
   .appbar_content {
     display: none;
   }
-  .logo_bef{
-  display: inline  !important;
-}
-.nav_bar{
-  display: none;
-}
+  .logo_bef {
+    display: inline !important;
+  }
+  .nav_bar {
+    display: none;
+  }
   .menu {
-  font-size: 30px  !important;
-  display: inline  !important;
-  cursor: pointer;
-  // margin-top: -40% !important;
-  float: right;
-  position: absolute !important;
-  // background: rgba(0, 0, 0, 0.4);
-}
-.menu_btn {
-  // background: transparent !important;
-  height: 42px !important;
-  margin-top: -2%;
+    font-size: 30px !important;
+    display: inline !important;
+    cursor: pointer;
+    // margin-top: -40% !important;
+    float: right;
+    position: absolute !important;
+    // background: rgba(0, 0, 0, 0.4);
+  }
+  .menu_btn {
+    // background: transparent !important;
+    height: 42px !important;
+    margin-top: -2%;
 
-  float: right;
-  position: fixed;
-  display: block;
-}
-
-  // .appbar_content {
-  //   flex-direction: column !important;
-  //   align-items: flex-start;
-  //   text-align: center !important;
-  //   margin-top: 70%;
-  //   width: 100%;
-  // }
-  // .appbar_content li {
-  //   padding: 2%;
-  //   text-align: center;
-
-  //   // margin-left:-40% ;
-  // }
-  // .appbar_content li a {
-  //   padding: 0.5rem 1rem;
-  // }
-  // .appbar_content ul {
-  //   flex-direction: column;
-  //   width: 100%;
-  // }
-  // .appbar_content.active {
-  //   display: flex;
-  // }
-  // .nav_bar {
-  //   flex-direction: column !important;
-  //   height: 30vh !important;
-  //   align-items: flex-start;
-  //   padding: 0px !important;
-  // }
+    float: right;
+    position: fixed;
+    display: block;
+  }
 }
 .logo {
   height: 100px;
@@ -856,10 +761,9 @@ v-textarea {
     margin-left: -15% !important;
     margin-right: 10%;
   }
-  
 }
 @media only screen and (max-width: 400px) {
-    .image {
+  .image {
     // float: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -875,83 +779,74 @@ v-textarea {
     transition-delay: 0.1ms;
   }
 }
-@media only screen and (max-width: 550px){
-   .form_cont {
+@media only screen and (max-width: 550px) {
+  .form_cont {
     margin-left: -10% !important;
     margin-right: 15%;
   }
-  .about_us p{
-    font-size: 20px!important;
+  .about_us p {
+    font-size: 20px !important;
     // text-align: justify;;
   }
 }
-@media only screen and (max-width:350px) {
-  .products{
-    // min-height: max-content !important;
-  }
+@media only screen and (max-width: 350px) {
   .container {
     min-height: max-content !important;
   }
 }
-@media only screen and (max-width:550px) {
-
- .appbar_content {
+@media only screen and (max-width: 550px) {
+  .appbar_content {
     display: none;
   }
-  .logo_bef{
-  display: inline  !important;
-}
-.nav_bar{
-  display: none;
-}
-  .menu {
-  font-size: 30px  !important;
-  display: inline  !important;
-  cursor: pointer;
-  margin-top: -40% !important;
-  float: right;
-  position: absolute !important;
-  // background: rgba(0, 0, 0, 0.4);
-}
-.menu_btn {
-  // background: transparent !important;
-  height: 42px !important;
-  margin-top: -2%;
-
-  float: right;
-  position: fixed;
-  display: block;
-}
-
-}
-@media screen and (max-width:400px) {
-.appbar_content {
+  .logo_bef {
+    display: inline !important;
+  }
+  .nav_bar {
     display: none;
   }
-  .logo_bef{
-  display: inline  !important;
-}
-.nav_bar{
-  display: none;
-}
   .menu {
-  font-size: 30px  !important;
-  display: inline  !important;
-  cursor: pointer;
-  margin-top: -40% !important;
-  float: right;
-  position: absolute !important;
-  // background: rgba(0, 0, 0, 0.4);
-}
-.menu_btn {
-  // background: transparent !important;
-  height: 42px !important;
-  margin-top: -2%;
+    font-size: 30px !important;
+    display: inline !important;
+    cursor: pointer;
+    margin-top: -40% !important;
+    float: right;
+    position: absolute !important;
+  }
+  .menu_btn {
+    height: 42px !important;
+    margin-top: -2%;
 
-  float: right;
-  position: fixed;
-  display: block;
+    float: right;
+    position: fixed;
+    display: block;
+  }
 }
-  
+@media screen and (max-width: 400px) {
+  .appbar_content {
+    display: none;
+  }
+  .logo_bef {
+    display: inline !important;
+  }
+  .nav_bar {
+    display: none;
+  }
+  .menu {
+    font-size: 30px !important;
+    display: inline !important;
+    cursor: pointer;
+    margin-top: -40% !important;
+    float: right;
+    position: absolute !important;
+    // background: rgba(0, 0, 0, 0.4);
+  }
+  .menu_btn {
+    height: 42px !important;
+    margin-top: -2%;
+
+    float: right;
+    position: fixed;
+    display: block;
+  }
 }
 </style>
