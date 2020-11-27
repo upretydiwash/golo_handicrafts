@@ -127,7 +127,7 @@
         <v-row>
           <v-col>
             <div class="form_cont center">
-              <v-form class="form_cont" data-netlify="true">
+              <v-form class="form_cont" name="contact" method="post" data-netlify="true">
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
