@@ -719,13 +719,13 @@ v-textarea {
   }
 
   .appbar_content {
-    display: none;
+    display: none !important;
   }
   .logo_bef {
     display: inline !important;
   }
   .nav_bar {
-    display: none;
+    display: none  !important;
   }
   .menu {
     font-size: 30px !important;
