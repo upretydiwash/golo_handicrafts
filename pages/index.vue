@@ -18,6 +18,7 @@
           <v-toolbar-title><img :src="a[4].img" class="logo"/></v-toolbar-title>
         </v-app-bar>
         <template>
+        <div class="overlay">
           <div>
             <v-parallax height="700" :src="require('../assets/cover.jpg')">
               <div>
@@ -58,13 +59,14 @@
                 >
               </div>
             </v-parallax>
+            </div>
           </div>
         </template>
       </div>
     </div>
 
     <!--About div -->
-    <div class="overlay">
+    <div class="overlay_1">
       <div class="about_us " id="about">
         <div class="container">
           <h2 style="margin-top:5rem">
@@ -83,7 +85,7 @@
           <h3>COLLECTIONS</h3>
           <h1>{{ a[2].Content }}</h1>
         </div>
-        <div>
+        
           <gallery
             :items="
               articles.map((article, index) => {
@@ -111,7 +113,7 @@
           >
             <figcaption class="centered">{{ image.title }}</figcaption>
           </div>
-        </div>
+        
       </div>
     </div>
 
@@ -309,12 +311,32 @@ export default {
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
 
-  background: -moz-linear-gradient(
+  background: url('../assets/contact-bg.jpg'), -moz-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
     rgba(73, 119, 194, 0.85) 100%
   ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
+  background: url('../assets/contact-bg.jpg'), -webkit-linear-gradient(
+    left,
+    rgba(107, 77, 168, 0.85) 0%,
+    rgba(73, 119, 194, 0.85) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background:url('../assets/contact-bg.jpg'), linear-gradient(
+    to right,
+    rgba(107, 77, 168, 0.85) 0%,
+    rgba(73, 119, 194, 0.85) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 );
+  background-blend-mode: overlay;
+   /* IE6-9 */
+}
+.overlay_1{
+  background:  -moz-linear-gradient(
+    left,
+    rgba(107, 77, 168, 0.85) 0%,
+    rgba(73, 119, 194, 0.85) 100%
+  ); /* FF3.6-15 */
+  background:  -webkit-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
     rgba(73, 119, 194, 0.85) 100%
@@ -324,14 +346,18 @@ export default {
     rgba(107, 77, 168, 0.85) 0%,
     rgba(73, 119, 194, 0.85) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 );
+  background-blend-mode: overlay;
+   /* IE6-9 */
+
 }
 .centered {
   position: relative;
   background: black;
   opacity: 0.5;
   color: white;
-  top: 50%;
+text-transform: uppercase;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   // visibility: hidden;
@@ -484,6 +510,7 @@ a {
   color: black;
   min-height: 100vh;
   height: max-content;
+  display: flex;
 }
 .products h3,
 .text_contact h3 {
@@ -531,7 +558,7 @@ a {
   min-height: 100vh;
   min-height: max-content;
   justify-items: center;
-  background: url("../assets/contact-bg.jpg");
+  
 }
 
 .menu {
@@ -711,7 +738,7 @@ v-textarea {
     background-repeat: no-repeat;
     background-position: center center center center;
     border: 1px solid #ebebeb;
-    margin: 20px;
+    margin-left: 30px !important;
     height: 100px !important;
     width: 100px !important;
     cursor: pointer;
@@ -798,6 +825,22 @@ v-textarea {
   }
 }
 @media only screen and (max-width: 550px) {
+  .image {
+    // float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    border: 1px solid #ebebeb;
+    margin-left: 60px !important;
+    height: 100px !important;
+    width: 100px !important;
+    cursor: pointer;
+  }
+  .image:hover {
+    transform: scale(1.2);
+    transition-delay: 0.1ms;
+  }
+
   .appbar_content {
     display: none;
   }
@@ -825,6 +868,22 @@ v-textarea {
   }
 }
 @media screen and (max-width: 400px) {
+  .image {
+    // float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    border: 1px solid #ebebeb;
+    margin-left: 40px !important;
+    height: 100px !important;
+    width: 100px !important;
+    cursor: pointer;
+  }
+  .image:hover {
+    transform: scale(1.2);
+    transition-delay: 0.1ms;
+  }
+
   .appbar_content {
     display: none;
   }
@@ -852,4 +911,23 @@ v-textarea {
     display: block;
   }
 }
+@media screen and (max-width:300px) {
+  .image {
+    // float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    border: 1px solid #ebebeb;
+    margin-left: 70px !important;
+    height: 100px !important;
+    width: 100px !important;
+    cursor: pointer;
+  }
+  .image:hover {
+    transform: scale(1.2);
+    transition-delay: 0.1ms;
+  }
+
+}
+
 </style>
