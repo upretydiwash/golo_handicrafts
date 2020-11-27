@@ -39,9 +39,7 @@
                 <a href="#contact" @click="closeNav()">Contact</a>
               </div>
 
-              <div v-if="bar">
-                <v-card> HELLO</v-card>
-              </div>
+              
 
               <div class="cover_text ">
                 <img
@@ -284,6 +282,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.btn_cover{
+  color: white !important;
+}
 .v-parallax_content {
   height: 200vh !important;
   width: 100%;
@@ -467,12 +468,14 @@ a {
 }
 .btn_cover {
   align-content: center;
+  color: white  !important;
   text-align: center;
   margin-top: -10%;
   background: transparent !important;
 }
-
-
+.theme--light.v-btn {
+  color: white;
+}
 
 .products {
   background: #e9e9e9;
