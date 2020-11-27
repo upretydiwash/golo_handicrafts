@@ -139,6 +139,7 @@
                         placeholder="Name"
                         outlined
                         label="Name"
+                        name="name"
                         required
                       />
                     </v-col>
@@ -150,6 +151,7 @@
                         class="col"
                         outlined
                         placeholder="Email"
+                        name="email"
                         required
                       />
                     </v-col>
@@ -158,6 +160,7 @@
                         class="col"
                         outlined
                         placeholder="Subject"
+                        name="subject"
                         required
                       />
                     </v-col>
@@ -170,13 +173,14 @@
                         type="message"
                         outlined
                         placeholder="Message"
+                        name="message"
                       />
                     </v-col>
                   </v-row>
 
                   <v-row>
                     <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <v-btn block class="btn_submit">Submit</v-btn>
+                      <v-btn block type="submit" class="btn_submit">Submit</v-btn>
                     </v-col>
                   </v-row>
                 </v-container>
