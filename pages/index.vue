@@ -127,7 +127,7 @@
         <v-row>
           <v-col>
             <div class="form_cont center">
-              <v-form class="form_cont" netlify="true">
+              <v-form class="form_cont" data-netlify="true">
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
@@ -228,8 +228,7 @@ export default {
     const { $content } = context;
     const articles = await $content("product").fetch();
     const a = await $content("post").fetch();
-    console.table(a[0].Content, a[1].Content, a[2].Content, a[3].Content);
-    console.log(a);
+    
     return {
       articles,
       a: a.sort((a, b) => a.id - b.id)
