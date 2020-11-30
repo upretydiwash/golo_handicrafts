@@ -129,7 +129,7 @@
             
             <div class="form_cont center">
               <form
-              action="post"
+              action="POST"
               name="contactForm"
               id="contactForm"
               data-netlify="true"
