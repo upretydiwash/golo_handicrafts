@@ -128,65 +128,57 @@
           <v-col>
             
             <div class="form_cont center">
-              <form name="contact" action="POST" data-netlify="true" class="form_cont" >
-                <v-container class="form_container">
-                  <p style="align-text:center">SEND US A MESSAGE</p>
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <input
-                        class="col"
-                        type="text"
-                        color="white"
-                        placeholder="Name"
-                        outlined
-                        label="Name"
-                        name="name"
-                        required
-                      />
-                    </v-col>
-                  </v-row>
+              <form
+              action="post"
+              name="contactForm"
+              id="contactForm"
+              data-netlify="true"
+            >
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      class="form-control"
+                      placeholder="Name"
+                      required
+                    />
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      name="email"
+                      type="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea
+                  name="message"
+                  id="message"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Message"
+                  required
+                ></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div id="success"></div>
+              <button type="submit" class="btn btn-custom btn-lg">
+                Send Message
+              </button>
+            </form>
 
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
-                      <input
-                        class="col"
-                        outlined
-                        placeholder="Email"
-                        name="email"
-                        required
-                      />
-                    </v-col>
-                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
-                      <input
-                      
-                        class="col"
-                        outlined
-                        placeholder="Subject"
-                        name="subject"
-                        required
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <textarea
-                        class="col"
-                        type="message"
-                        outlined
-                        placeholder="Message"
-                        name="message"
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <v-btn block type="submit" class="btn_submit">Submit</v-btn>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </form>
             </div>
           </v-col>
         </v-row>
