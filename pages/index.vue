@@ -18,7 +18,7 @@
           <v-toolbar-title><img :src="a[4].img" class="logo"/></v-toolbar-title>
         </v-app-bar>
         <template>
-        <div class="overlay">
+      
           <div>
             <v-parallax height="700" :src="require('../assets/cover.jpg')">
               <div>
@@ -60,7 +60,7 @@
               </div>
             </v-parallax>
             </div>
-          </div>
+          
         </template>
       </div>
     </div>
@@ -128,7 +128,7 @@
           <v-col>
             
             <div class="form_cont center">
-              <form class="form_cont" type="hidden" name="contact" method="post" data-netlify="true">
+              <form class="form_cont" hidden name="contact" method="post" data-netlify="true">
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
