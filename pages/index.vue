@@ -128,65 +128,21 @@
           <v-col>
             
             <div class="form_cont center">
-              <form name="contact" action="POST" data-netlify="true" class="form_cont" >
-                <v-container class="form_container">
-                  <p style="align-text:center">SEND US A MESSAGE</p>
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <input
-                        class="col"
-                        type="text"
-                        color="white"
-                        placeholder="Name"
-                        outlined
-                        label="Name"
-                        name="name"
-                        required
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
-                      <input
-                        class="col"
-                        outlined
-                        placeholder="Email"
-                        name="email"
-                        required
-                      />
-                    </v-col>
-                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
-                      <input
-                      
-                        class="col"
-                        outlined
-                        placeholder="Subject"
-                        name="subject"
-                        required
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <textarea
-                        class="col"
-                        type="message"
-                        outlined
-                        placeholder="Message"
-                        name="message"
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <v-btn block type="submit" class="btn_submit">Submit</v-btn>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </form>
+            <form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Your Name: <input type="text" name="name" /></label>   
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email" /></label>
+  </p>
+ 
+  <p>
+    <label>Message: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
             </div>
           </v-col>
         </v-row>
