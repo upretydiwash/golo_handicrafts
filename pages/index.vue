@@ -129,6 +129,7 @@
             
             <div class="form_cont center">
               <form method="POST" name="contact" netlify class="form_cont" >
+                <input type="hidden" name="form-name" value="contact" />
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
