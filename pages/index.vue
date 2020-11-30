@@ -128,7 +128,7 @@
           <v-col>
             
             <div class="form_cont center">
-              <form action="POST" name="contact" data-netlify="true"  >
+              <form action="POST" name="contact" netlify class="form_cont" >
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
@@ -219,6 +219,7 @@
 </template>
 
 <script>
+import contactform from "../components/contactform";
 import footer from "../components/footer";
 import about from "../content/post/about.md";
 import covertext from "../content/post/covertext.md";
@@ -258,7 +259,7 @@ export default {
   },
 
   components: {
-   
+    contactform,
     footer,
     gallery
   },
