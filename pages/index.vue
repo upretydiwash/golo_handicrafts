@@ -18,7 +18,6 @@
           <v-toolbar-title><img :src="a[4].img" class="logo"/></v-toolbar-title>
         </v-app-bar>
         <template>
-      
           <div>
             <v-parallax height="700" :src="require('../assets/cover.jpg')">
               <div>
@@ -40,11 +39,9 @@
                 <a href="#contact" @click="closeNav()">Contact</a>
               </div>
 
-              
-
               <div class="cover_text ">
                 <img
-                  src="../static/uploads/logo.jpg"
+                  :src="a[4].img"
                   class="logo_bef"
                   height="100"
                   width="100"
@@ -59,8 +56,7 @@
                 >
               </div>
             </v-parallax>
-            </div>
-          
+          </div>
         </template>
       </div>
     </div>
@@ -85,35 +81,34 @@
           <h3>COLLECTIONS</h3>
           <h1>{{ a[2].Content }}</h1>
         </div>
-        
-          <gallery
-            :items="
-              articles.map((article, index) => {
-                return {
-                  id: index + 1,
-                  href: article.img,
-                  description: article.description,
-                  markdown: article.description
-                };
-              })
-            "
-            :origin="origin"
-            @close="origin = null"
-          ></gallery>
-          <div
-            class="image"
-            v-for="(image, index) in articles"
-            :key="index"
-            @click="origin = index"
-            :style="{
-              backgroundImage: 'url(' + image.img + ')',
-              width: '200px',
-              height: '200px'
-            }"
-          >
-            <figcaption class="centered">{{ image.title }}</figcaption>
-          </div>
-        
+
+        <gallery
+          :items="
+            articles.map((article, index) => {
+              return {
+                id: index + 1,
+                href: article.img,
+                description: article.description,
+                markdown: article.description
+              };
+            })
+          "
+          :origin="origin"
+          @close="origin = null"
+        ></gallery>
+        <div
+          class="image"
+          v-for="(image, index) in articles"
+          :key="index"
+          @click="origin = index"
+          :style="{
+            backgroundImage: 'url(' + image.img + ')',
+            width: '200px',
+            height: '200px'
+          }"
+        >
+          <figcaption class="centered">{{ image.title }}</figcaption>
+        </div>
       </div>
     </div>
 
@@ -126,69 +121,22 @@
         </div>
         <v-row>
           <v-col>
-            
             <div class="form_cont center">
-              <form method="POST" name="contact" netlify class="form_cont" >
-                <input type="hidden" name="form-name" value="contact" />
-                <v-container class="form_container">
-                  <p style="align-text:center">SEND US A MESSAGE</p>
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <input
-                        class="col"
-                        type="text"
-                        color="white"
-                        placeholder="Name"
-                        outlined
-                        name="name"
-                        required
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
-                      <input
-                        class="col"
-                        outlined
-                        type="text"
-                        placeholder="Email"
-                        name="email"
-                        required
-                      />
-                    </v-col>
-                    <v-col cols="12" xs="12" sm="3" md="3" lg="3">
-                      <input
-                      
-                        class="col"
-                        type="text"
-                        outlined
-                        placeholder="Subject"
-                        name="subject"
-                        required
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <textarea
-                        class="col"
-                        type="message"
-                        outlined
-                        placeholder="Message"
-                        name="message"
-                      />
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" xs="12" sm="6" md="6" lg="6">
-                      <v-btn block type="submit" class="btn_submit">Submit</v-btn>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </form>
+             <form name="contact" method="post">
+          <input type="hidden" name="form-name" value="contact" />
+          <p>
+            <label>Your Name: <input type="text" name="name"/></label>
+          </p>
+          <p>
+            <label>Your Email: <input type="email" name="email"/></label>
+          </p>
+          <p>
+            <label>Message: <textarea name="message"></textarea></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
             </div>
           </v-col>
         </v-row>
@@ -236,7 +184,7 @@ export default {
     const { $content } = context;
     const articles = await $content("product").fetch();
     const a = await $content("post").fetch();
-    
+
     return {
       articles,
       a: a.sort((a, b) => a.id - b.id)
@@ -291,7 +239,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.btn_cover{
+.btn_cover {
   color: white !important;
 }
 .v-parallax_content {
@@ -318,32 +266,39 @@ export default {
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
 
-  background: url('../assets/contact-bg.jpg'), -moz-linear-gradient(
-    left,
-    rgba(107, 77, 168, 0.85) 0%,
-    rgba(73, 119, 194, 0.85) 100%
-  ); /* FF3.6-15 */
-  background: url('../assets/contact-bg.jpg'), -webkit-linear-gradient(
-    left,
-    rgba(107, 77, 168, 0.85) 0%,
-    rgba(73, 119, 194, 0.85) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background:url('../assets/contact-bg.jpg'), linear-gradient(
-    to right,
-    rgba(107, 77, 168, 0.85) 0%,
-    rgba(73, 119, 194, 0.85) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url("../assets/contact-bg.jpg"),
+    -moz-linear-gradient(left, rgba(107, 77, 168, 0.85) 0%, rgba(
+            73,
+            119,
+            194,
+            0.85
+          )
+          100%); /* FF3.6-15 */
+  background: url("../assets/contact-bg.jpg"),
+    -webkit-linear-gradient(left, rgba(107, 77, 168, 0.85) 0%, rgba(
+            73,
+            119,
+            194,
+            0.85
+          )
+          100%); /* Chrome10-25,Safari5.1-6 */
+  background: url("../assets/contact-bg.jpg"),
+    linear-gradient(
+      to right,
+      rgba(107, 77, 168, 0.85) 0%,
+      rgba(73, 119, 194, 0.85) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 );
   background-blend-mode: overlay;
-   /* IE6-9 */
+  /* IE6-9 */
 }
-.overlay_1{
-  background:  -moz-linear-gradient(
+.overlay_1 {
+  background: -moz-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
     rgba(73, 119, 194, 0.85) 100%
   ); /* FF3.6-15 */
-  background:  -webkit-linear-gradient(
+  background: -webkit-linear-gradient(
     left,
     rgba(107, 77, 168, 0.85) 0%,
     rgba(73, 119, 194, 0.85) 100%
@@ -355,15 +310,14 @@ export default {
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 );
   background-blend-mode: overlay;
-   /* IE6-9 */
-
+  /* IE6-9 */
 }
 .centered {
   position: relative;
   background: black;
   opacity: 0.5;
   color: white;
-text-transform: uppercase;
+  text-transform: uppercase;
   top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -501,7 +455,7 @@ a {
 }
 .btn_cover {
   align-content: center;
-  color: white  !important;
+  color: white !important;
   text-align: center;
   margin-top: -10%;
   background: transparent !important;
@@ -565,7 +519,6 @@ a {
   min-height: 100vh;
   min-height: max-content;
   justify-items: center;
-  
 }
 
 .menu {
@@ -762,7 +715,7 @@ v-textarea {
     display: inline !important;
   }
   .nav_bar {
-    display: none  !important;
+    display: none !important;
   }
   .menu {
     font-size: 30px !important;
@@ -918,7 +871,7 @@ v-textarea {
     display: block;
   }
 }
-@media screen and (max-width:300px) {
+@media screen and (max-width: 300px) {
   .image {
     // float: left;
     background-size: cover;
@@ -934,7 +887,5 @@ v-textarea {
     transform: scale(1.2);
     transition-delay: 0.1ms;
   }
-
 }
-
 </style>
