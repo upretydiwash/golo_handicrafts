@@ -130,7 +130,7 @@
             <div class="form_cont center">
               <form action="POST" name="contact" netlify class="form_cont" >
                 <v-container class="form_container">
-                  <p style="align-text:center">SEND US A MESSAGE</p>
+                  <!-- <p style="align-text:center">SEND US A MESSAGE</p> -->
                   <v-row>
                     <v-col cols="12" xs="12" sm="6" md="6" lg="6">
                       <input
