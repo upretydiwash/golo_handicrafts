@@ -123,7 +123,7 @@
           <v-col>
             <div class="form_cont center">
               <form method="POST" name="contactForm" data-netlify="true" class="form_cont">
-                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="form-name" value="contactForm" />
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
                   <v-row>
