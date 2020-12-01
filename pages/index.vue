@@ -19,7 +19,7 @@
         </v-app-bar>
         <template>
           <div>
-            <v-parallax height="700" :src="require('../assets/cover.jpg')">
+            <v-parallax height="700" :src="require('../static/uploads/cover.jpg')">
               <div>
                 <v-icon class="menu" style="color:white" @click="openNav()"
                   >mdi-menu</v-icon
