@@ -101,6 +101,7 @@
           v-for="(image, index) in articles"
           :key="index"
           @click="origin = index"
+          @dblclick="origin = index"
           :style="{
             backgroundImage: 'url(' + image.img + ')',
             width: '300px',
@@ -225,7 +226,7 @@ import "vue-blueimp-gallery/dist/vue-blueimp-gallery.css";
 import gallery from "vue-blueimp-gallery";
 // import VueGallery from "vue-gallery";
 export default {
-  el: "#app",
+  name: "#app",
 
   async asyncData(context) {
     const { $content } = context;
@@ -268,7 +269,6 @@ export default {
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
 
       origin: null,
-      index: null
     };
   },
   methods: {
@@ -926,10 +926,10 @@ v-textarea {
     margin: .3rem;
     color: #e9e9e9 !important;
     cursor: pointer;
+    width: 30%  !important;
 }
-.blueimp-gallery .control.button.caption-edit {
-    margin: .3rem;
-    color: #e9e9e9 !important;
+.blueimp-gallery .control.button.caption-edit, .blueimp-gallery .control.button.remove {
+    
     display: none !important;
     
 }
