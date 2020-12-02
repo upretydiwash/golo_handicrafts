@@ -81,35 +81,30 @@
           <h3>COLLECTIONS</h3>
           <h1>{{ a[2].Content }}</h1>
         </div>
+ <div>
+    <LightGallery
+      :images="articles.map((article,index) => {
+        return{
+          title: article.description,
+          url: article.img
+        }
+      })"
+      :index="index"
+      :disable-scroll="true"
+      @close="index = null"
+    />
+    
+      <div class="image"
+        v-for="(image, i) in articles"
+        :key="i"
+        @click="index = i"
+      >
+        <img :src="image.img" height="300px" width="300px">
+            <figcaption class="centered">{{image.title}} </figcaption>
 
-        <gallery
-          :items="
-            articles.map((article, index) => {
-              return {
-                id: index + 1,
-                href: article.img,
-                description: article.description,
-                markdown: article.description
-              };
-            })
-          "
-          :origin="origin"
-          @close="origin = null"
-        ></gallery>
-        <div
-          class="image"
-          v-for="(image, index) in articles"
-          :key="index"
-          @click="origin = index"
-          @dblclick="origin = index"
-          :style="{
-            backgroundImage: 'url(' + image.img + ')',
-            width: '300px',
-            height: '300px'
-          }"
-        >
-          <figcaption class="centered">{{ image.title }}</figcaption>
-        </div>
+      </div>
+  </div>
+        
       </div>
     </div>
 
@@ -225,6 +220,8 @@ import logo from "../content/post/logo.md";
 import "vue-blueimp-gallery/dist/vue-blueimp-gallery.css";
 import gallery from "vue-blueimp-gallery";
 // import VueGallery from "vue-gallery";
+  import { LightGallery } from 'vue-light-gallery';
+
 export default {
   name: "#app",
 
@@ -259,10 +256,16 @@ export default {
   components: {
     contactform,
     footer,
-    gallery
+    gallery,
+    LightGallery
   },
   data() {
     return {
+      images: [
+          { title:'img 1', url: '../static/uploads/ball.jpg' },
+          { title:'img 2', url: '../static/uploads/Ball1.jpg' },
+        ],
+        index: null,
       bar: false,
       dialog: false,
       padless: false,
@@ -297,6 +300,7 @@ export default {
   opacity: 1;
   overflow: hidden;
 }
+
 .v-parallax__image {
   height: 1800px !important;
   min-height: 400px !important;
@@ -367,9 +371,9 @@ export default {
   opacity: 0.5;
   color: white;
   text-transform: uppercase;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // top: 20%;
+  // left: 70%;
+  transform: translate(0%, -160%);
   // visibility: hidden;
 }
 .nav_item a {
@@ -409,6 +413,8 @@ export default {
   border: 1px solid #ebebeb;
   margin-left: 50px;
   margin-top:2%;
+  height: 300px;
+  width: 300px;
 
   cursor: pointer;
 }
@@ -681,6 +687,7 @@ v-textarea {
   background: white !important;
 }
 @media screen and (max-height: 450px) {
+
   .sidenav {
     padding-top: 15px;
   }
@@ -742,18 +749,7 @@ v-textarea {
   }
 }
 @media only screen and (max-width: 700px) and (min-width: 150px) {
-  .image {
-    // float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center center center;
-    border: 1px solid #ebebeb;
-    margin-left: 30px !important;
-    height: 100px !important;
-    width: 100px !important;
-    cursor: pointer;
-  }
-  
+
 
   .appbar_content {
     display: none !important;
@@ -800,19 +796,38 @@ v-textarea {
   }
 }
 @media only screen and (max-width: 400px) {
-  .image {
-    // float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center center center;
-    border: 1px solid #ebebeb;
-    margin: 5px;
-    height: 100px !important;
-    width: 100px !important;
-    cursor: pointer;
+    .image{
+    margin-left: 25px !important ;
   }
-  
 }
+@media only screen and (max-width: 420px) {
+    .image{
+    margin-left: 45px !important ;
+  }
+}
+  @media only screen and (max-width: 380px) {
+    .image{
+    margin-left: 25px !important ;
+  }
+
+
+}
+@media only screen and (max-width: 325px) {
+    .image{
+    margin-left: -15px !important ;
+margin-top: 3%;
+padding: 30px, 30px, 30px, 30px;
+  }
+}
+@media only screen and (max-width: 370px) {
+    .image{
+    margin-left: 15px !important ;
+  }
+}
+  @media only screen and (max-width: 281px) {
+   
+
+  }
 @media only screen and (max-width: 550px) {
   .form_cont {
     margin-left: -10% !important;
@@ -829,18 +844,10 @@ v-textarea {
   }
 }
 @media only screen and (max-width: 550px) {
-  .image {
-    // float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center center center;
-    border: 1px solid #ebebeb;
-    margin-left: 60px !important;
-    height: 100px !important;
-    width: 100px !important;
-    cursor: pointer;
-  }
  
+ .image{
+   margin-left:110px;
+ }
 
   .appbar_content {
     display: none;
@@ -869,18 +876,7 @@ v-textarea {
   }
 }
 @media screen and (max-width: 400px) {
-  .image {
-    // float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center center center;
-    border: 1px solid #ebebeb;
-    margin-left: 40px !important;
-    height: 100px !important;
-    width: 100px !important;
-    cursor: pointer;
-  }
- 
+  
   .appbar_content {
     display: none;
   }
@@ -909,17 +905,7 @@ v-textarea {
   }
 }
 @media screen and (max-width: 300px) {
-  .image {
-    // float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center center center;
-    border: 1px solid #ebebeb;
-    margin-left: 70px !important;
-    height: 100px !important;
-    width: 100px !important;
-    cursor: pointer;
-  }
+ 
   
 }
 .blueimp-gallery .control.button.close {

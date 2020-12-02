@@ -18,7 +18,8 @@
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
     "vue-blueimp-gallery": "0.0.2",
-    "vue-gallery": "^2.0.1"
+    "vue-gallery": "^2.0.1",
+    "vue-light-gallery": "^1.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",
