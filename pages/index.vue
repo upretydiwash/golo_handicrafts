@@ -747,6 +747,8 @@ v-textarea {
     // max-width: 50px;
     min-width: 80px !important;
   }
+  
+  
 }
 @media only screen and (max-width: 700px) and (min-width: 150px) {
 
@@ -862,7 +864,7 @@ padding: 30px, 30px, 30px, 30px;
     font-size: 30px !important;
     display: inline !important;
     cursor: pointer;
-    margin-top: -40% !important;
+    margin-top: -25% !important;
     float: right;
     position: absolute !important;
   }
