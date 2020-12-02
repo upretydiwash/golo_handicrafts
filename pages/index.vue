@@ -103,8 +103,8 @@
           @click="origin = index"
           :style="{
             backgroundImage: 'url(' + image.img + ')',
-            width: '200px',
-            height: '200px'
+            width: '300px',
+            height: '300px'
           }"
         >
           <figcaption class="centered">{{ image.title }}</figcaption>
@@ -254,6 +254,7 @@ export default {
     }
   },
 
+
   components: {
     contactform,
     footer,
@@ -271,7 +272,8 @@ export default {
     };
   },
   methods: {
-    openNav() {
+   
+  openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     },
 
@@ -405,7 +407,8 @@ export default {
   background-repeat: no-repeat;
   background-position: center center center center;
   border: 1px solid #ebebeb;
-  margin: 7px;
+  margin-left: 50px;
+  margin-top:2%;
 
   cursor: pointer;
 }
@@ -750,10 +753,7 @@ v-textarea {
     width: 100px !important;
     cursor: pointer;
   }
-  .image:hover {
-    transform: scale(1.2);
-    transition-delay: 0.1ms;
-  }
+  
 
   .appbar_content {
     display: none !important;
@@ -811,10 +811,7 @@ v-textarea {
     width: 100px !important;
     cursor: pointer;
   }
-  .image:hover {
-    transform: scale(1.2);
-    transition-delay: 0.1ms;
-  }
+  
 }
 @media only screen and (max-width: 550px) {
   .form_cont {
@@ -843,10 +840,7 @@ v-textarea {
     width: 100px !important;
     cursor: pointer;
   }
-  .image:hover {
-    transform: scale(1.2);
-    transition-delay: 0.1ms;
-  }
+ 
 
   .appbar_content {
     display: none;
@@ -886,11 +880,7 @@ v-textarea {
     width: 100px !important;
     cursor: pointer;
   }
-  .image:hover {
-    transform: scale(1.2);
-    transition-delay: 0.1ms;
-  }
-
+ 
   .appbar_content {
     display: none;
   }
@@ -930,9 +920,17 @@ v-textarea {
     width: 100px !important;
     cursor: pointer;
   }
-  .image:hover {
-    transform: scale(1.2);
-    transition-delay: 0.1ms;
-  }
+  
+}
+.blueimp-gallery .control.button.close {
+    margin: .3rem;
+    color: #e9e9e9 !important;
+    cursor: pointer;
+}
+.blueimp-gallery .control.button.caption-edit {
+    margin: .3rem;
+    color: #e9e9e9 !important;
+    display: none !important;
+    
 }
 </style>
