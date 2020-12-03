@@ -19,7 +19,10 @@
         </v-app-bar>
         <template>
           <div>
-            <v-parallax height="700" :src="require('../static/uploads/cover.jpg')">
+            <v-parallax
+              height="700"
+              :src="require('../static/uploads/cover.jpg')"
+            >
               <div>
                 <v-icon class="menu" style="color:white" @click="openNav()"
                   >mdi-menu</v-icon
@@ -81,30 +84,31 @@
           <h3>COLLECTIONS</h3>
           <h1>{{ a[2].Content }}</h1>
         </div>
- <div>
-    <LightGallery
-      :images="articles.map((article,index) => {
-        return{
-          title: article.description,
-          url: article.img
-        }
-      })"
-      :index="index"
-      :disable-scroll="true"
-      @close="index = null"
-    />
-    
-      <div class="image"
-        v-for="(image, i) in articles"
-        :key="i"
-        @click="index = i"
-      >
-        <img :src="image.img" height="300px" width="300px">
-            <figcaption class="centered">{{image.title}} </figcaption>
+        <div>
+          <LightGallery
+            :images="
+              articles.map((article, index) => {
+                return {
+                  title: article.description,
+                  url: article.img
+                };
+              })
+            "
+            :index="index"
+            :disable-scroll="true"
+            @close="index = null"
+          />
 
-      </div>
-  </div>
-        
+          <div
+            class="image"
+            v-for="(image, i) in articles"
+            :key="i"
+            @click="index = i"
+          >
+            <img :src="image.img" height="300px" width="300px" />
+            <figcaption class="centered">{{ image.title }}</figcaption>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -118,7 +122,12 @@
         <v-row>
           <v-col>
             <div class="form_cont center">
-              <form method="POST" name="contactForm" data-netlify="true" class="form_cont">
+              <form
+                method="POST"
+                name="contactForm"
+                data-netlify="true"
+                class="form_cont"
+              >
                 <input type="hidden" name="form-name" value="contactForm" />
                 <v-container class="form_container">
                   <p style="align-text:center">SEND US A MESSAGE</p>
@@ -220,7 +229,7 @@ import logo from "../content/post/logo.md";
 import "vue-blueimp-gallery/dist/vue-blueimp-gallery.css";
 import gallery from "vue-blueimp-gallery";
 // import VueGallery from "vue-gallery";
-  import { LightGallery } from 'vue-light-gallery';
+import { LightGallery } from "vue-light-gallery";
 
 export default {
   name: "#app",
@@ -252,7 +261,6 @@ export default {
     }
   },
 
-
   components: {
     contactform,
     footer,
@@ -262,21 +270,20 @@ export default {
   data() {
     return {
       images: [
-          { title:'img 1', url: '../static/uploads/ball.jpg' },
-          { title:'img 2', url: '../static/uploads/Ball1.jpg' },
-        ],
-        index: null,
+        { title: "img 1", url: "../static/uploads/ball.jpg" },
+        { title: "img 2", url: "../static/uploads/Ball1.jpg" }
+      ],
+      index: null,
       bar: false,
       dialog: false,
       padless: false,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
 
-      origin: null,
+      origin: null
     };
   },
   methods: {
-   
-  openNav() {
+    openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     },
 
@@ -412,16 +419,17 @@ export default {
   background-position: center center center center;
   border: 1px solid #ebebeb;
   margin-left: 50px;
-  margin-top:2%;
+  margin-top: 2%;
   height: 300px;
   width: 300px;
 
   cursor: pointer;
 }
 .image:hover {
-  transform: scale(1.2);
-  transition-delay: 0.1ms;
-}
+    transform: scale(1.2) !important;
+    transition-delay: 0.1ms !important;
+  }
+
 .pro_card div {
   text-align: center;
 }
@@ -490,6 +498,7 @@ a {
   margin: 0 0 0.9rem 0;
   padding: 10%;
 }
+
 
 .logo {
   display: block;
@@ -687,7 +696,6 @@ v-textarea {
   background: white !important;
 }
 @media screen and (max-height: 450px) {
-
   .sidenav {
     padding-top: 15px;
   }
@@ -747,12 +755,15 @@ v-textarea {
     // max-width: 50px;
     min-width: 80px !important;
   }
-  
-  
 }
+@media only screen and (min-width: 550px) and (max-width: 1024px) {
+  .image:hover {
+    transform: scale(1.2) !important;
+    transition-delay: 0.1ms !important;
+  }
+}
+
 @media only screen and (max-width: 700px) and (min-width: 150px) {
-
-
   .appbar_content {
     display: none !important;
   }
@@ -798,38 +809,84 @@ v-textarea {
   }
 }
 @media only screen and (max-width: 400px) {
-    .image{
+  .image {
     margin-left: 25px !important ;
   }
 }
 @media only screen and (max-width: 420px) {
-    .image{
+  .image {
     margin-left: 45px !important ;
   }
 }
-  @media only screen and (max-width: 380px) {
-    .image{
+@media only screen and (max-width: 380px) {
+  .image {
     margin-left: 25px !important ;
   }
-
-
 }
-@media only screen and (max-width: 325px) {
-    .image{
-    margin-left: -15px !important ;
-margin-top: 3%;
-padding: 30px, 30px, 30px, 30px;
+
+@media only screen and (max-width: 322px) {
+  .image {
+    height: auto;
+    width: auto;
+
+    margin-top: 3%;
+    // padding-right: 60px;
   }
 }
 @media only screen and (max-width: 370px) {
-    .image{
+  .image {
     margin-left: 15px !important ;
   }
 }
-  @media only screen and (max-width: 281px) {
-   
 
+@media only screen and (max-width: 320px) {
+  .image {
+    height: auto;
+    width: auto;
+    margin-left: -3px !important;
+    margin-top: 3%;
+    // padding-right: 60px;
   }
+
+  .text_products h3 {
+    font-size: 20px;
+  }
+  .text_products h1 {
+    font-size: 22px;
+  }
+  .about_us h2 {
+    font-size: 20px;
+  }
+  .about_us .container p {
+    font-size: 12px;
+  }
+  .cover_text h1 {
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 281px) {
+  .image {
+    margin-left: -35px !important;
+    margin-top: 3%;
+    // padding-right: 60px;
+  }
+  .text_products h3 {
+    font-size: 20px;
+  }
+  .text_products h1 {
+    font-size: 22px;
+  }
+  .about_us h2 {
+    font-size: 20px;
+  }
+  .about_us .container p {
+    font-size: 12px;
+  }
+  .cover_text h1 {
+    font-size: 25px;
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .form_cont {
     margin-left: -10% !important;
@@ -846,10 +903,9 @@ padding: 30px, 30px, 30px, 30px;
   }
 }
 @media only screen and (max-width: 550px) {
- 
- .image{
-   margin-left:110px;
- }
+  .image {
+    margin-left: 110px;
+  }
 
   .appbar_content {
     display: none;
@@ -878,7 +934,6 @@ padding: 30px, 30px, 30px, 30px;
   }
 }
 @media screen and (max-width: 400px) {
-  
   .appbar_content {
     display: none;
   }
@@ -906,19 +961,19 @@ padding: 30px, 30px, 30px, 30px;
     display: block;
   }
 }
-@media screen and (max-width: 300px) {
- 
-  
+@media screen and (max-width: 325px) {
+  .image {
+    margin-left: -2px;
+  }
 }
 .blueimp-gallery .control.button.close {
-    margin: .3rem;
-    color: #e9e9e9 !important;
-    cursor: pointer;
-    width: 30%  !important;
+  margin: 0.3rem;
+  color: #e9e9e9 !important;
+  cursor: pointer;
+  width: 30% !important;
 }
-.blueimp-gallery .control.button.caption-edit, .blueimp-gallery .control.button.remove {
-    
-    display: none !important;
-    
+.blueimp-gallery .control.button.caption-edit,
+.blueimp-gallery .control.button.remove {
+  display: none !important;
 }
 </style>
