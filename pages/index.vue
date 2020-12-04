@@ -826,21 +826,21 @@ v-textarea {
 @media only screen and (max-width: 400px) {
   .image {
     margin-left: 25px !important ;
-      margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
   }
 }
 @media only screen and (max-width: 420px) {
   .image {
     margin-left: 45px !important ;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
   }
 }
 @media only screen and (max-width: 380px) {
   .image {
     margin-left: 25px !important ;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
   }
 }
@@ -849,7 +849,7 @@ v-textarea {
   .image {
     height: auto;
     width: auto;
-      margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
     margin-top: 3%;
     // padding-right: 60px;
@@ -858,7 +858,7 @@ v-textarea {
 @media only screen and (max-width: 370px) {
   .image {
     margin-left: 15px !important ;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
   }
 }
@@ -869,7 +869,7 @@ v-textarea {
     width: auto;
     margin-left: -3px !important;
     margin-top: 3%;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
     // padding-right: 60px;
   }
@@ -894,7 +894,7 @@ v-textarea {
   .image {
     margin-left: -35px !important;
     margin-top: 3%;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
     // padding-right: 60px;
   }
@@ -933,7 +933,7 @@ v-textarea {
 @media only screen and (max-width: 550px) {
   .image {
     margin-left: 110px;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
   }
 
@@ -994,7 +994,7 @@ v-textarea {
 @media screen and (max-width: 325px) {
   .image {
     margin-left: -2px;
-          margin-bottom: 1%;
+      margin-bottom: 7% !important;
 
   }
 }
