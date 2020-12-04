@@ -375,12 +375,13 @@ export default {
 .centered {
   position: relative;
   background: black;
-  opacity: 0.5;
+  opacity: 0.3;
   color: white;
+  //  border: 2px solid #ebebeb;
   text-transform: uppercase;
-  // top: 20%;
-  // left: 70%;
-  transform: translate(0%, -160%);
+  top: 0%;
+  left: 0.1%;
+  transform: translate(0.4%, -30%);
   // visibility: hidden;
 }
 .nav_item a {
@@ -422,12 +423,22 @@ export default {
   margin-top: 2%;
   height: 300px;
   width: 300px;
+  margin-bottom: 2%;
+ 
 
   cursor: pointer;
 }
+
 .image:hover {
-    transform: scale(1.2) !important;
-    transition-delay: 0.1ms !important;
+    transform: scale(1.1) !important;
+    // transition-delay: 0.1s !important;
+    
+    
+    transition: all 0.5s;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
   }
 
 .pro_card div {
@@ -537,6 +548,10 @@ a {
   min-height: 100vh;
   height: max-content;
   display: flex;
+  // margin-bottom: 2%;
+}
+.products .container {
+  margin-bottom: 2%;
 }
 .products h3,
 .text_contact h3 {
