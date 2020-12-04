@@ -826,16 +826,22 @@ v-textarea {
 @media only screen and (max-width: 400px) {
   .image {
     margin-left: 25px !important ;
+      margin-bottom: 1%;
+
   }
 }
 @media only screen and (max-width: 420px) {
   .image {
     margin-left: 45px !important ;
+          margin-bottom: 1%;
+
   }
 }
 @media only screen and (max-width: 380px) {
   .image {
     margin-left: 25px !important ;
+          margin-bottom: 1%;
+
   }
 }
 
@@ -843,6 +849,7 @@ v-textarea {
   .image {
     height: auto;
     width: auto;
+      margin-bottom: 1%;
 
     margin-top: 3%;
     // padding-right: 60px;
@@ -851,6 +858,8 @@ v-textarea {
 @media only screen and (max-width: 370px) {
   .image {
     margin-left: 15px !important ;
+          margin-bottom: 1%;
+
   }
 }
 
@@ -860,6 +869,8 @@ v-textarea {
     width: auto;
     margin-left: -3px !important;
     margin-top: 3%;
+          margin-bottom: 1%;
+
     // padding-right: 60px;
   }
 
@@ -883,6 +894,8 @@ v-textarea {
   .image {
     margin-left: -35px !important;
     margin-top: 3%;
+          margin-bottom: 1%;
+
     // padding-right: 60px;
   }
   .text_products h3 {
@@ -920,6 +933,8 @@ v-textarea {
 @media only screen and (max-width: 550px) {
   .image {
     margin-left: 110px;
+          margin-bottom: 1%;
+
   }
 
   .appbar_content {
@@ -979,6 +994,8 @@ v-textarea {
 @media screen and (max-width: 325px) {
   .image {
     margin-left: -2px;
+          margin-bottom: 1%;
+
   }
 }
 .blueimp-gallery .control.button.close {
