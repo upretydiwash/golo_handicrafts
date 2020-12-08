@@ -201,11 +201,16 @@
       >
         <v-card flat dark tile width="100%" class="red lighten-1 text-center">
           <v-card-text>
-            <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
+            <a :href="'//'+x[0].link" target="_blank">
               <v-icon size="24px">
-                {{ icon }}
+                mdi-facebook
               </v-icon>
-            </v-btn>
+            </a>
+            <a :href="'//'+x[1].link" target="_blank" icon>
+              <v-icon size="24px">
+                mdi-instagram
+              </v-icon>
+            </a>
           </v-card-text>
 
           <v-divider></v-divider>
@@ -238,10 +243,13 @@ export default {
     const { $content } = context;
     const articles = await $content("product").fetch();
     const a = await $content("post").fetch();
-
+    const x = await $content("socialmedia").fetch();
+    x: x.sort((x, y) => x.id - y.id);
+    console.log(x[0].link);
     return {
       articles,
-      a: a.sort((a, b) => a.id - b.id)
+      a: a.sort((a, b) => a.id - b.id),
+      x: x.sort((x, y) => x.id - y.id)
     };
   },
 
@@ -269,20 +277,25 @@ export default {
   },
   data() {
     return {
-      images: [
-        { title: "img 1", url: "../static/uploads/ball.jpg" },
-        { title: "img 2", url: "../static/uploads/Ball1.jpg" }
-      ],
+      link : 'www.fb.com',
       index: null,
       bar: false,
       dialog: false,
       padless: false,
-      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      icons: [
+        { image: "mdi-facebook", url: "facebook.com" },
+        { image: "mdi-instagram", url: "instagram.com" }
+      ],
 
       origin: null
     };
   },
   methods: {
+    // openSite(a) {
+    //   console.log(a);
+
+    //   // window.open(a, "_blank","" ,false);
+    // },
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     },
@@ -424,22 +437,20 @@ export default {
   height: 300px;
   width: 300px;
   margin-bottom: 2%;
- 
 
   cursor: pointer;
 }
 
 .image:hover {
-    transform: scale(1.1) !important;
-    // transition-delay: 0.1s !important;
-    
-    
-    transition: all 0.5s;
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
-  }
+  transform: scale(1.1) !important;
+  // transition-delay: 0.1s !important;
+
+  transition: all 0.5s;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
 
 .pro_card div {
   text-align: center;
@@ -509,7 +520,6 @@ a {
   margin: 0 0 0.9rem 0;
   padding: 10%;
 }
-
 
 .logo {
   display: block;
@@ -710,6 +720,15 @@ input,
 v-textarea {
   background: white !important;
 }
+@media screen and (max-width: 580px){
+  .image:hover {
+     transform: unset !important;
+
+  transition: unset !important;
+}
+
+  
+};
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
@@ -826,22 +845,19 @@ v-textarea {
 @media only screen and (max-width: 400px) {
   .image {
     margin-left: 25px !important ;
-      margin-bottom: 7% !important;
-
+    margin-bottom: 7% !important;
   }
 }
 @media only screen and (max-width: 420px) {
   .image {
     margin-left: 45px !important ;
-      margin-bottom: 7% !important;
-
+    margin-bottom: 7% !important;
   }
 }
 @media only screen and (max-width: 380px) {
   .image {
     margin-left: 25px !important ;
-      margin-bottom: 7% !important;
-
+    margin-bottom: 7% !important;
   }
 }
 
@@ -849,7 +865,7 @@ v-textarea {
   .image {
     height: auto;
     width: auto;
-      margin-bottom: 7% !important;
+    margin-bottom: 7% !important;
 
     margin-top: 3%;
     // padding-right: 60px;
@@ -858,8 +874,7 @@ v-textarea {
 @media only screen and (max-width: 370px) {
   .image {
     margin-left: 15px !important ;
-      margin-bottom: 7% !important;
-
+    margin-bottom: 7% !important;
   }
 }
 
@@ -869,7 +884,7 @@ v-textarea {
     width: auto;
     margin-left: -3px !important;
     margin-top: 3%;
-      margin-bottom: 7% !important;
+    margin-bottom: 7% !important;
 
     // padding-right: 60px;
   }
@@ -894,7 +909,7 @@ v-textarea {
   .image {
     margin-left: -35px !important;
     margin-top: 3%;
-      margin-bottom: 7% !important;
+    margin-bottom: 7% !important;
 
     // padding-right: 60px;
   }
@@ -933,8 +948,7 @@ v-textarea {
 @media only screen and (max-width: 550px) {
   .image {
     margin-left: 110px;
-      margin-bottom: 7% !important;
-
+    margin-bottom: 7% !important;
   }
 
   .appbar_content {
@@ -994,8 +1008,7 @@ v-textarea {
 @media screen and (max-width: 325px) {
   .image {
     margin-left: -2px;
-      margin-bottom: 7% !important;
-
+    margin-bottom: 7% !important;
   }
 }
 .blueimp-gallery .control.button.close {
