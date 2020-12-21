@@ -339,30 +339,31 @@ export default {
 .overlay {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100&0.85+0,0.85+100 */
 
-  background: url("../assets/contact-bg.jpg"),
-    -moz-linear-gradient(left, rgba(107, 77, 168, 0.85) 0%, rgba(
-            73,
-            119,
-            194,
-            0.85
-          )
-          100%); /* FF3.6-15 */
-  background: url("../assets/contact-bg.jpg"),
-    -webkit-linear-gradient(left, rgba(107, 77, 168, 0.85) 0%, rgba(
-            73,
-            119,
-            194,
-            0.85
-          )
-          100%); /* Chrome10-25,Safari5.1-6 */
-  background: url("../assets/contact-bg.jpg"),
-    linear-gradient(
-      to right,
-      rgba(107, 77, 168, 0.85) 0%,
-      rgba(73, 119, 194, 0.85) 100%
-    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // background: url("../assets/contact-bg.jpg"),
+  //   -moz-linear-gradient(left, rgba(107, 77, 168, 0.85) 0%, rgba(
+  //           73,
+  //           119,
+  //           194,
+  //           0.85
+  //         )
+  //         100%); /* FF3.6-15 */
+  // background: url("../assets/contact-bg.jpg"),
+  //   -webkit-linear-gradient(left, rgba(107, 77, 168, 0.85) 0%, rgba(
+  //           73,
+  //           119,
+  //           194,
+  //           0.85
+  //         )
+  //         100%); /* Chrome10-25,Safari5.1-6 */
+  // // background: url("../assets/contact-bg.jpg"),
+  //   linear-gradient(
+  //     to right,
+  //     rgba(107, 77, 168, 0.85) 0%,
+  //     rgba(73, 119, 194, 0.85) 100%
+  //   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 );
   background-blend-mode: overlay;
+  background-color: rgb(32, 23, 23) !important
   /* IE6-9 */
 }
 .overlay_1 {
@@ -496,7 +497,7 @@ a {
 .about_us {
   font-family: "montserrat-bold", sans-serif;
   text-align: center;
-  // background: #e9e9e9;
+  background: rgb(32, 23, 23) !important;
 
   color: white;
   min-height: 100vh;
@@ -696,7 +697,7 @@ html {
   line-height: 6rem;
   padding: 0 3rem;
   width: 100%;
-  background: #f9a828;
+  background: #f9a828 !important;
   color: #000000;
   margin-top: 0.6rem;
 }
