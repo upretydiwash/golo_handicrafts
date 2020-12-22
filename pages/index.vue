@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div data-app>
     <!-- Home -->
     <div id="home">
       <div>
@@ -85,7 +85,7 @@
           <h1>{{ a[2].Content }}</h1>
         </div>
         <div>
-          <LightGallery
+          <!-- <LightGallery
             :images="
               articles.map((article, index) => {
                 return {
@@ -97,17 +97,88 @@
             :index="index"
             :disable-scroll="true"
             @close="index = null"
-          />
+          /> -->
+          <template>
+            <v-row justify="center">
+              <v-dialog light v-model="dialog" max-width="490">
+                <template v-slot:activator="{ on, attrs }">
+                  <div
+                    dark
+                    v-bind="attrs"
+                    v-on="on"
+                    class="image"
+                    v-for="(image, i) in articles"
+                    :key="i"
+                    @click="() => img_dialog(i)"
+                  >
+                    <img :src="image.img" height="300px" width="300px" />
+                    <figcaption class="centered">
+                      {{ image.title }}
+                    </figcaption>
+                  </div>
+                </template>
+                <v-card class="mx-auto" max-width="1000">
+                  <v-img
+                    :src="articles[h].img"
+                    height="auto"
+                    max-height="365px"
+                    min-height="270px"
+                  >
+                    <!-- <div>
+                    <v-btn @click="dialog=false" style="float:right; left:5%; background:black" >
+                    <v-icon  >mdi-close</v-icon> </v-btn>
+                    </div> -->
+                    <v-btn
+                      v-if="h < articles.length - 1"
+                      @click="img_next(h)"
+                      style="float:right;  top:90%; background:black;opacity:0.2;"
+                      ><v-icon> mdi-arrow-right </v-icon>
+                    </v-btn>
+                    <v-btn
+                      v-if="h > 0"
+                      @click="img_prev(h)"
+                      style="float:left; right:100%; top:90%; background:black;opacity:0.2"
+                    >
+                      <v-icon> mdi-arrow-left </v-icon>
+                    </v-btn>
+                  </v-img>
 
-          <div
-            class="image"
-            v-for="(image, i) in articles"
-            :key="i"
-            @click="index = i"
-          >
-            <img :src="image.img" height="300px" width="300px" />
-            <figcaption class="centered">{{ image.title }}</figcaption>
-          </div>
+                  <v-card-title> {{ articles[h].title }} </v-card-title>
+
+                  <v-card-subtitle>
+                    1,000 miles of wonder
+                  </v-card-subtitle>
+
+                  <v-card-actions>
+                    <v-btn style="color:green" text>
+                      Explore
+                    </v-btn>
+
+                    <v-spacer></v-spacer>
+
+                    <v-btn icon @click="show = !show">
+                      <v-icon>{{
+                        show ? "mdi-chevron-up" : "mdi-chevron-down"
+                      }}</v-icon>
+                    </v-btn>
+                  </v-card-actions>
+
+                  <v-expand-transition>
+                    <div v-show="show">
+                      <v-divider></v-divider>
+
+                      <v-card-text>
+                        {{ articles[h].description }}
+                      </v-card-text>
+                    </div>
+                  </v-expand-transition>
+                  <v-btn block style="color:red" @click="dialog = false">
+                    CLOSE
+                  </v-btn>
+                </v-card>
+              </v-dialog>
+            </v-row>
+          </template>
         </div>
       </div>
     </div>
@@ -201,12 +272,12 @@
       >
         <v-card flat dark tile width="100%" class="red lighten-1 text-center">
           <v-card-text>
-            <a :href="'//'+x[0].link" target="_blank">
+            <a :href="'//' + x[0].link" target="_blank">
               <v-icon size="24px">
                 mdi-facebook
               </v-icon>
             </a>
-            <a :href="'//'+x[1].link" target="_blank" icon>
+            <a :href="'//' + x[1].link" target="_blank" icon>
               <v-icon size="24px">
                 mdi-instagram
               </v-icon>
@@ -237,37 +308,24 @@ import gallery from "vue-blueimp-gallery";
 import { LightGallery } from "vue-light-gallery";
 
 export default {
-  name: "#app",
-
   async asyncData(context) {
     const { $content } = context;
     const articles = await $content("product").fetch();
     const a = await $content("post").fetch();
     const x = await $content("socialmedia").fetch();
     x: x.sort((x, y) => x.id - y.id);
-    console.log(x[0].link);
+    console.log(articles.length);
     return {
       articles,
       a: a.sort((a, b) => a.id - b.id),
       x: x.sort((x, y) => x.id - y.id)
     };
   },
-
-  computed: {
-    about() {
-      return about;
-      console.log(about);
-    },
-    covertext() {
-      return covertext;
-    },
-    collectiontext() {
-      return collectiontext;
-    },
-    logo() {
-      return logo;
-    }
+  watch: {
+    h: function(val) {}
   },
+
+
 
   components: {
     contactform,
@@ -277,10 +335,11 @@ export default {
   },
   data() {
     return {
-      link : 'www.fb.com',
       index: null,
       bar: false,
       dialog: false,
+      h: 1,
+      show: false,
       padless: false,
       icons: [
         { image: "mdi-facebook", url: "facebook.com" },
@@ -291,11 +350,25 @@ export default {
     };
   },
   methods: {
-    // openSite(a) {
-    //   console.log(a);
 
-    //   // window.open(a, "_blank","" ,false);
-    // },
+    //next image
+    img_next(a) {
+      a = a + 1;
+      this.h = a;
+    },
+//previous image
+    img_prev(a) {
+      a = a - 1;
+      this.h = a;
+    },
+   //open image dialog 
+    img_dialog(a) {
+      this.dialog = true;
+
+      this.h = a;
+      return this.h;
+    },
+//sidenav for mobile view
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     },
@@ -363,7 +436,7 @@ export default {
   //   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', endColorstr='#d94977c2', GradientType=1 );
   background-blend-mode: overlay;
-  background-color: rgb(32, 23, 23) !important
+  background-color: rgb(32, 23, 23) !important;
   /* IE6-9 */
 }
 .overlay_1 {
@@ -721,15 +794,13 @@ input,
 v-textarea {
   background: white !important;
 }
-@media screen and (max-width: 580px){
+@media screen and (max-width: 580px) {
   .image:hover {
-     transform: unset !important;
+    transform: unset !important;
 
-  transition: unset !important;
+    transition: unset !important;
+  }
 }
-
-  
-};
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
