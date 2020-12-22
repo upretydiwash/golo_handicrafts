@@ -145,9 +145,9 @@
 
                   <v-card-title> {{ articles[h].title }} </v-card-title>
 
-                  <v-card-subtitle>
+                  <!-- <v-card-subtitle>
                     1,000 miles of wonder
-                  </v-card-subtitle>
+                  </v-card-subtitle> -->
 
                   <v-card-actions>
                     <v-btn style="color:green" text>
