@@ -1,5 +1,5 @@
 ---
 title: ball
-description: 'Colorful ball'
-img: "uploads/ball.jpg"
+description: Felt Colorful Ball
+img: uploads/ball.jpg
 ---
