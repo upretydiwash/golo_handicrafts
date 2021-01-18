@@ -15,14 +15,17 @@
 
           <v-spacer />
 
-          <v-toolbar-title><img :src="a[4].img" class="logo"/></v-toolbar-title>
+       
         </v-app-bar>
+        
         <template>
           <div>
+            
             <v-parallax
               height="700"
               :src="require('../static/uploads/cover.jpg')"
             >
+            <img :src="a[4].img"  width="100px" class="logo_web">
               <div>
                 <v-icon class="menu" style="color:white" @click="openNav()"
                   >mdi-menu</v-icon
@@ -49,7 +52,7 @@
                   height="100"
                   width="100"
                 />
-                <h1>
+                <h1 style="margin-top:10%">
                   {{ a[3].Content }}
                 </h1>
               </div>
@@ -406,6 +409,9 @@ export default {
 .burger {
   display: none;
 }
+.logo_web{
+  margin-top:-25%
+}
 .logo_bef {
   display: none;
 }
@@ -573,7 +579,7 @@ a {
   background: rgb(32, 23, 23) !important;
 
   color: white;
-  min-height: 100vh;
+  min-height: 70vh;
   height: max-content;
 }
 .about_us p {
@@ -603,11 +609,11 @@ a {
   padding: 0;
   outline: 0;
   border: none;
-  height: 90px !important;
+  // height: 190px !important;
   width: 100px !important;
-  height: 37px;
+  // height: 37px;
   margin-top: -20%;
-  background-size: 190px 65px;
+  background-size: 190px 165px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
@@ -820,10 +826,11 @@ v-textarea {
   }
   .v-parallax__image {
     height: 1800px !important;
-    // min-height: 400px !important;
-    min-width: 800px !important;
+   
+    // min-height: 20% !important;
+    min-width: 50% !important;
     // max-width: 250px !important;
-    // width: 100% !important;
+    width: 100% !important;
   }
 
   .about_us p {
@@ -871,6 +878,9 @@ v-textarea {
 
 @media only screen and (max-width: 700px) and (min-width: 150px) {
   .appbar_content {
+    display: none !important;
+  }
+  .logo_web{
     display: none !important;
   }
   .logo_bef {
@@ -1001,6 +1011,25 @@ v-textarea {
     font-size: 25px;
   }
 }
+//logo
+@media only screen and (min-width: 701px) and (max-width: 820px) {
+.logo_web{
+  margin-top:-45% !important;
+}
+
+}
+@media only screen and (min-width: 821px) and (max-width: 1060px) {
+
+.logo_web{
+  margin-top: -35% !important;
+}
+}
+@media only screen and (min-width: 1061px) and (max-width: 1590px) {
+.logo_web{
+  margin-top: -20% !important;
+}
+}
+
 
 @media only screen and (max-width: 550px) {
   .form_cont {
