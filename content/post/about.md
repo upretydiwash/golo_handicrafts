@@ -9,6 +9,8 @@ Content: >-
 
     
 
+
+    
   Our Dryer Balls are 100% New Zealand Wool and Handmade in Nepal. Fully Organic and no chemicals are used in the process. It works by absorbing moisture and providing better air circulation. The ball retain the heat they receive from the dryer and therefore boost the drying process.
 img: uploads/img-20201208-wa0001.jpg
 ---
