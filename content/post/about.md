@@ -5,7 +5,7 @@ Content: >-
   Golo Handicraft is the 2nd Generation of Handicraft Business, dedicated in
   creating Finest Quality of handmade Dryer Balls. Our team emphasizes on unique
   technique and on the purity of the raw materials in creating perfect shape,
-  size, quality and weight of the dryer balls. 
+  size, quality and weight of the dryer balls. \
 
     
 
