@@ -10,7 +10,6 @@ Content: >-
 
   ```html
 
-  <br>
 
   ```
 
