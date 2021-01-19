@@ -74,9 +74,8 @@
           <h2 style="margin-top:5rem">
             ABOUT US
           </h2>
-          <p>
-            {{ a[0].Content }}
-          </p>
+                       <div v-html="$md.render(a[0].Content)"></div>
+
         </div>
       </div>
     </div>
