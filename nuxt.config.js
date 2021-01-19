@@ -45,6 +45,11 @@ module.exports = {
     '@nuxtjs/markdownit',
     '@nuxt/content'
   ],
+   markdownit: {
+    injected: true,
+
+    
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
