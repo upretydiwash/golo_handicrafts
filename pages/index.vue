@@ -170,7 +170,7 @@
                       <v-divider></v-divider>
 
                       <v-card-text>
-                        {{ articles[h].description }}
+                                      <div v-html="$md.render(articles[h].description)"></div>
                       </v-card-text>
                     </div>
                   </v-expand-transition>
