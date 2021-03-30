@@ -9,5 +9,17 @@ Content: >-
 
 
   Our Dryer Balls are 100% New Zealand Wool and Handmade in Nepal. Fully Organic and no chemicals are used in the process. It works by absorbing moisture and providing better air circulation. The ball retain the heat they receive from the dryer and therefore boost the drying process.
+
+
+  Benefits:
+
+
+  * Removes lints and Creases on your clothes. Drastically Reduces drying time hence saving Electricity cost.
+
+  * Reduces statics on clothes.  Fully Organic. Kids Friendly.
+
+  * Contains no Toxic Ingredients know to cause irritation or respiratory health problems.
+
+  * Its hypoallergenic and wont leave residue on your clothes.
 img: uploads/img-20201208-wa0001.jpg
 ---
